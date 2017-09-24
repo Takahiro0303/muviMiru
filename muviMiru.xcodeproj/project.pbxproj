@@ -11,13 +11,13 @@
 		1C2155AF1F6E5EA800EA2E8E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2155AE1F6E5EA800EA2E8E /* FirstViewController.swift */; };
 		1C2155B11F6E5EA800EA2E8E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2155B01F6E5EA800EA2E8E /* SecondViewController.swift */; };
 		1C2155B41F6E5EA800EA2E8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C2155B21F6E5EA800EA2E8E /* Main.storyboard */; };
-		1C2155B61F6E5EA800EA2E8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2155B51F6E5EA800EA2E8E /* Assets.xcassets */; };
 		1C2155B91F6E5EA800EA2E8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C2155B71F6E5EA800EA2E8E /* LaunchScreen.storyboard */; };
 		1C2155C41F6E5EA900EA2E8E /* muviMiruTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2155C31F6E5EA900EA2E8E /* muviMiruTests.swift */; };
 		1C2155CF1F6E5EA900EA2E8E /* muviMiruUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2155CE1F6E5EA900EA2E8E /* muviMiruUITests.swift */; };
 		1C2155DD1F6E5F3600EA2E8E /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2155DC1F6E5F3600EA2E8E /* ThirdViewController.swift */; };
-		1C2155E11F6E969F00EA2E8E /* movieSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2155E01F6E969F00EA2E8E /* movieSwipeViewController.swift */; };
 		1C2155E31F6EA02600EA2E8E /* movieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2155E21F6EA02600EA2E8E /* movieDetail.swift */; };
+		1C21575A1F73905A00EA2E8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2157591F73905A00EA2E8E /* Assets.xcassets */; };
+		1CA84D771F7394B40050C03D /* movieSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA84D761F7394B40050C03D /* movieSwipe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,6 @@
 		1C2155AE1F6E5EA800EA2E8E /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		1C2155B01F6E5EA800EA2E8E /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		1C2155B31F6E5EA800EA2E8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1C2155B51F6E5EA800EA2E8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C2155B81F6E5EA800EA2E8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C2155BA1F6E5EA800EA2E8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C2155BF1F6E5EA900EA2E8E /* muviMiruTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = muviMiruTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,8 +52,9 @@
 		1C2155CE1F6E5EA900EA2E8E /* muviMiruUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = muviMiruUITests.swift; sourceTree = "<group>"; };
 		1C2155D01F6E5EA900EA2E8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C2155DC1F6E5F3600EA2E8E /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
-		1C2155E01F6E969F00EA2E8E /* movieSwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = movieSwipeViewController.swift; path = ../movieSwipeViewController.swift; sourceTree = "<group>"; };
 		1C2155E21F6EA02600EA2E8E /* movieDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = movieDetail.swift; sourceTree = "<group>"; };
+		1C2157591F73905A00EA2E8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
+		1CA84D761F7394B40050C03D /* movieSwipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = movieSwipe.swift; path = ../movieSwipe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,13 +106,13 @@
 			isa = PBXGroup;
 			children = (
 				1C2155AC1F6E5EA800EA2E8E /* AppDelegate.swift */,
-				1C2155E01F6E969F00EA2E8E /* movieSwipeViewController.swift */,
 				1C2155AE1F6E5EA800EA2E8E /* FirstViewController.swift */,
 				1C2155B01F6E5EA800EA2E8E /* SecondViewController.swift */,
+				1CA84D761F7394B40050C03D /* movieSwipe.swift */,
 				1C2155B21F6E5EA800EA2E8E /* Main.storyboard */,
 				1C2155DC1F6E5F3600EA2E8E /* ThirdViewController.swift */,
 				1C2155E21F6EA02600EA2E8E /* movieDetail.swift */,
-				1C2155B51F6E5EA800EA2E8E /* Assets.xcassets */,
+				1C2157591F73905A00EA2E8E /* Assets.xcassets */,
 				1C2155B71F6E5EA800EA2E8E /* LaunchScreen.storyboard */,
 				1C2155BA1F6E5EA800EA2E8E /* Info.plist */,
 			);
@@ -245,7 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C2155B91F6E5EA800EA2E8E /* LaunchScreen.storyboard in Resources */,
-				1C2155B61F6E5EA800EA2E8E /* Assets.xcassets in Resources */,
+				1C21575A1F73905A00EA2E8E /* Assets.xcassets in Resources */,
 				1C2155B41F6E5EA800EA2E8E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,11 +272,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C2155B11F6E5EA800EA2E8E /* SecondViewController.swift in Sources */,
+				1CA84D771F7394B40050C03D /* movieSwipe.swift in Sources */,
 				1C2155E31F6EA02600EA2E8E /* movieDetail.swift in Sources */,
 				1C2155DD1F6E5F3600EA2E8E /* ThirdViewController.swift in Sources */,
 				1C2155AD1F6E5EA800EA2E8E /* AppDelegate.swift in Sources */,
 				1C2155AF1F6E5EA800EA2E8E /* FirstViewController.swift in Sources */,
-				1C2155E11F6E969F00EA2E8E /* movieSwipeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +523,7 @@
 				1C2155D51F6E5EA900EA2E8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1C2155D61F6E5EA900EA2E8E /* Build configuration list for PBXNativeTarget "muviMiruTests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +532,7 @@
 				1C2155D81F6E5EA900EA2E8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1C2155D91F6E5EA900EA2E8E /* Build configuration list for PBXNativeTarget "muviMiruUITests" */ = {
 			isa = XCConfigurationList;
@@ -539,6 +541,7 @@
 				1C2155DB1F6E5EA900EA2E8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

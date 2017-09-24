@@ -43,7 +43,7 @@
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="more" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" image="icons8-Information Filled-50" selectedImage="icons8-Information Filled-50" id="acW-dT-cKf" colorLabel="IBBuiltInLabel-Orange"/>
                     <connections>
                         <segue destination="Fcj-lB-fPK" kind="show" id="6Vu-3S-AeX"/>
                     </connections>
@@ -104,7 +104,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="37" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wdS-TP-mHL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="49" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -125,23 +125,66 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" image="movieProject-1" selectedImage="movieProject-1" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="myTableView" destination="wdS-TP-mHL" id="bRz-kx-8X0"/>
-                        <segue destination="qjL-pi-nMF" kind="show" identifier="showDetail" id="y6k-a2-P0P"/>
+                        <segue destination="rzr-5r-MAh" kind="show" identifier="showDetail" id="K10-UB-SSB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="755.625" y="362.32394366197184"/>
+            <point key="canvasLocation" x="750" y="362"/>
         </scene>
-        <!--Movie Swipe View Controller-->
-        <scene sceneID="ki2-Qr-ZFd">
+        <!--Movie Swipe-->
+        <scene sceneID="G2T-B9-ePA">
             <objects>
-                <viewController id="qjL-pi-nMF" customClass="movieSwipeViewController" customModule="muviMiru" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O78-Ik-qHy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="rzr-5r-MAh" customClass="movieSwipe" customModule="muviMiru" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="taP-4t-wyD"/>
+                        <viewControllerLayoutGuide type="bottom" id="wc4-9P-xgO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q2O-os-FfN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qxf-P0-xJ0">
+                                <rect key="frame" x="40" y="71" width="240" height="252"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nbO-T4-XaQ">
+                                        <rect key="frame" x="46" y="70" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" fixedFrame="YES" image="iThumbsUp" translatesAutoresizingMaskIntoConstraints="NO" id="jeg-Oa-c5c">
+                                        <rect key="frame" x="96" y="14" width="48" height="48"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.85281735749999998" green="0.85281735749999998" blue="0.85281735749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES"/>
+                                </accessibility>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="6nA-w8-Kma" appends="YES" id="39q-4O-GLM"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="nbO-T4-XaQ" id="qAY-em-cQ1"/>
+                        <outlet property="thumbImage" destination="jeg-Oa-c5c" id="tEn-GX-1Jn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fOF-gK-Mhs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="6nA-w8-Kma">
+                    <connections>
+                        <action selector="panAction:" destination="rzr-5r-MAh" id="wHp-Cg-514"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1554" y="363"/>
+            <point key="canvasLocation" x="1552.5" y="362.32394366197184"/>
         </scene>
         <!--Third View Controller-->
         <scene sceneID="Exf-0p-4yq">
@@ -177,7 +220,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="hRs-t7-Ud3"/>
+                    <tabBarItem key="tabBarItem" image="icons8-User-48" selectedImage="icons8-User-48" id="hRs-t7-Ud3"/>
                     <connections>
                         <outlet property="myTextView" destination="a6R-A1-QRP" id="zAJ-QQ-L8A"/>
                         <segue destination="xiv-3d-ihb" kind="show" identifier="showDetail" id="G8F-jC-6JM"/>
@@ -253,4 +296,11 @@
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iThumbsUp" width="48" height="48"/>
+        <image name="icons8-Information Filled-50" width="50" height="50"/>
+        <image name="icons8-User-48" width="48" height="48"/>
+        <image name="movieProject-1" width="50" height="50"/>
+    </resources>
+    <color key="tintColor" red="0.069778274419999994" green="1" blue="0.82681080579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
