@@ -1,0 +1,6 @@
+framework module Pods_muviMiru {
+  umbrella header "Pods-muviMiru-umbrella.h"
+
+  export *
+  module * { export * }
+}

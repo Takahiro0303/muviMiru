@@ -17,7 +17,12 @@
 		1C2155DD1F6E5F3600EA2E8E /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2155DC1F6E5F3600EA2E8E /* ThirdViewController.swift */; };
 		1C2155E31F6EA02600EA2E8E /* movieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2155E21F6EA02600EA2E8E /* movieDetail.swift */; };
 		1C21575A1F73905A00EA2E8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2157591F73905A00EA2E8E /* Assets.xcassets */; };
+		1C67D3261F794A3900D9CACA /* FontAwesome_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C67D3271F794A3900D9CACA /* FontAwesome_swift.framework */; };
+		1C67D3291F7A241E00D9CACA /* FontAwsome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C67D3281F7A241E00D9CACA /* FontAwsome.swift */; };
 		1CA84D771F7394B40050C03D /* movieSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA84D761F7394B40050C03D /* movieSwipe.swift */; };
+		5FB70ABD4CE6972E03538E03 /* Pods_muviMiruTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09E859A8EF77E31A371821B /* Pods_muviMiruTests.framework */; };
+		BA2C2ABA753D6A65CF071BFB /* Pods_muviMiru.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A648BA1D8EF9958465BCE8 /* Pods_muviMiru.framework */; };
+		F0C7B778C23B2C127A8820CD /* Pods_muviMiruUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A0891BE0D30B4C50356AAB /* Pods_muviMiruUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +59,18 @@
 		1C2155DC1F6E5F3600EA2E8E /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		1C2155E21F6EA02600EA2E8E /* movieDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = movieDetail.swift; sourceTree = "<group>"; };
 		1C2157591F73905A00EA2E8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
+		1C67D3271F794A3900D9CACA /* FontAwesome_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FontAwesome_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C67D3281F7A241E00D9CACA /* FontAwsome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAwsome.swift; sourceTree = "<group>"; };
 		1CA84D761F7394B40050C03D /* movieSwipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = movieSwipe.swift; path = ../movieSwipe.swift; sourceTree = "<group>"; };
+		35A0891BE0D30B4C50356AAB /* Pods_muviMiruUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_muviMiruUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		386B4E41F59E7B9E6C08AF1E /* Pods-muviMiruUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muviMiruUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-muviMiruUITests/Pods-muviMiruUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8D8447E2E6BBF86C9AAE4FF5 /* Pods-muviMiruTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muviMiruTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-muviMiruTests/Pods-muviMiruTests.release.xcconfig"; sourceTree = "<group>"; };
+		9EC19C5A944493C43A4F55B9 /* Pods-muviMiru.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muviMiru.release.xcconfig"; path = "Pods/Target Support Files/Pods-muviMiru/Pods-muviMiru.release.xcconfig"; sourceTree = "<group>"; };
+		9EC4BAFFD560B6EBF07F2427 /* Pods-muviMiruTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muviMiruTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-muviMiruTests/Pods-muviMiruTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C0CB298900686FF15EDCDBD2 /* Pods-muviMiru.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muviMiru.debug.xcconfig"; path = "Pods/Target Support Files/Pods-muviMiru/Pods-muviMiru.debug.xcconfig"; sourceTree = "<group>"; };
+		C6A648BA1D8EF9958465BCE8 /* Pods_muviMiru.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_muviMiru.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F09E859A8EF77E31A371821B /* Pods_muviMiruTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_muviMiruTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA6ACAC6E95E063ED390298A /* Pods-muviMiruUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muviMiruUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-muviMiruUITests/Pods-muviMiruUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +78,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C67D3261F794A3900D9CACA /* FontAwesome_swift.framework in Frameworks */,
+				BA2C2ABA753D6A65CF071BFB /* Pods_muviMiru.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FB70ABD4CE6972E03538E03 /* Pods_muviMiruTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0C7B778C23B2C127A8820CD /* Pods_muviMiruUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +109,8 @@
 				1C2155C21F6E5EA900EA2E8E /* muviMiruTests */,
 				1C2155CD1F6E5EA900EA2E8E /* muviMiruUITests */,
 				1C2155AA1F6E5EA800EA2E8E /* Products */,
+				6F6E44A792619F4645D7B4EE /* Pods */,
+				4F7CBDAE63FEE00F7241FBBD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +134,7 @@
 				1C2155B21F6E5EA800EA2E8E /* Main.storyboard */,
 				1C2155DC1F6E5F3600EA2E8E /* ThirdViewController.swift */,
 				1C2155E21F6EA02600EA2E8E /* movieDetail.swift */,
+				1C67D3281F7A241E00D9CACA /* FontAwsome.swift */,
 				1C2157591F73905A00EA2E8E /* Assets.xcassets */,
 				1C2155B71F6E5EA800EA2E8E /* LaunchScreen.storyboard */,
 				1C2155BA1F6E5EA800EA2E8E /* Info.plist */,
@@ -137,6 +160,30 @@
 			path = muviMiruUITests;
 			sourceTree = "<group>";
 		};
+		4F7CBDAE63FEE00F7241FBBD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C67D3271F794A3900D9CACA /* FontAwesome_swift.framework */,
+				C6A648BA1D8EF9958465BCE8 /* Pods_muviMiru.framework */,
+				F09E859A8EF77E31A371821B /* Pods_muviMiruTests.framework */,
+				35A0891BE0D30B4C50356AAB /* Pods_muviMiruUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F6E44A792619F4645D7B4EE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0CB298900686FF15EDCDBD2 /* Pods-muviMiru.debug.xcconfig */,
+				9EC19C5A944493C43A4F55B9 /* Pods-muviMiru.release.xcconfig */,
+				9EC4BAFFD560B6EBF07F2427 /* Pods-muviMiruTests.debug.xcconfig */,
+				8D8447E2E6BBF86C9AAE4FF5 /* Pods-muviMiruTests.release.xcconfig */,
+				FA6ACAC6E95E063ED390298A /* Pods-muviMiruUITests.debug.xcconfig */,
+				386B4E41F59E7B9E6C08AF1E /* Pods-muviMiruUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,9 +191,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1C2155D31F6E5EA900EA2E8E /* Build configuration list for PBXNativeTarget "muviMiru" */;
 			buildPhases = (
+				D545277CABDFC4C7C714D221 /* [CP] Check Pods Manifest.lock */,
 				1C2155A51F6E5EA800EA2E8E /* Sources */,
 				1C2155A61F6E5EA800EA2E8E /* Frameworks */,
 				1C2155A71F6E5EA800EA2E8E /* Resources */,
+				4692CBDB57A1E4389B7524AB /* [CP] Embed Pods Frameworks */,
+				0C9455AFD6D1985891F3E092 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -161,9 +211,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1C2155D61F6E5EA900EA2E8E /* Build configuration list for PBXNativeTarget "muviMiruTests" */;
 			buildPhases = (
+				35F2C2EC295670FB0E912D38 /* [CP] Check Pods Manifest.lock */,
 				1C2155BB1F6E5EA900EA2E8E /* Sources */,
 				1C2155BC1F6E5EA900EA2E8E /* Frameworks */,
 				1C2155BD1F6E5EA900EA2E8E /* Resources */,
+				6F91B191E997FECE5BC0F761 /* [CP] Embed Pods Frameworks */,
+				E7368F8864DE195A47780BE6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,9 +232,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1C2155D91F6E5EA900EA2E8E /* Build configuration list for PBXNativeTarget "muviMiruUITests" */;
 			buildPhases = (
+				021393ACA2E6AFAAC0F7A31C /* [CP] Check Pods Manifest.lock */,
 				1C2155C61F6E5EA900EA2E8E /* Sources */,
 				1C2155C71F6E5EA900EA2E8E /* Frameworks */,
 				1C2155C81F6E5EA900EA2E8E /* Resources */,
+				8108DBAF4BE330A4C8A54998 /* [CP] Embed Pods Frameworks */,
+				5E3885AD761CBB7329CCC4FE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,6 +261,7 @@
 				TargetAttributes = {
 					1C2155A81F6E5EA800EA2E8E = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 4Z6DX6347R;
 						ProvisioningStyle = Automatic;
 					};
 					1C2155BE1F6E5EA900EA2E8E = {
@@ -266,11 +323,162 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		021393ACA2E6AFAAC0F7A31C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-muviMiruUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0C9455AFD6D1985891F3E092 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-muviMiru/Pods-muviMiru-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		35F2C2EC295670FB0E912D38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-muviMiruTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4692CBDB57A1E4389B7524AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-muviMiru/Pods-muviMiru-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-muviMiru/Pods-muviMiru-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E3885AD761CBB7329CCC4FE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-muviMiruUITests/Pods-muviMiruUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F91B191E997FECE5BC0F761 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-muviMiruTests/Pods-muviMiruTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8108DBAF4BE330A4C8A54998 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-muviMiruUITests/Pods-muviMiruUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D545277CABDFC4C7C714D221 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-muviMiru-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7368F8864DE195A47780BE6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-muviMiruTests/Pods-muviMiruTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1C2155A51F6E5EA800EA2E8E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C67D3291F7A241E00D9CACA /* FontAwsome.swift in Sources */,
 				1C2155B11F6E5EA800EA2E8E /* SecondViewController.swift in Sources */,
 				1CA84D771F7394B40050C03D /* movieSwipe.swift in Sources */,
 				1C2155E31F6EA02600EA2E8E /* movieDetail.swift in Sources */,
@@ -428,8 +636,10 @@
 		};
 		1C2155D41F6E5EA900EA2E8E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0CB298900686FF15EDCDBD2 /* Pods-muviMiru.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4Z6DX6347R;
 				INFOPLIST_FILE = muviMiru/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.takahirotsuchida.muviMiru;
@@ -440,8 +650,10 @@
 		};
 		1C2155D51F6E5EA900EA2E8E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EC19C5A944493C43A4F55B9 /* Pods-muviMiru.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4Z6DX6347R;
 				INFOPLIST_FILE = muviMiru/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.takahirotsuchida.muviMiru;
@@ -452,6 +664,7 @@
 		};
 		1C2155D71F6E5EA900EA2E8E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EC4BAFFD560B6EBF07F2427 /* Pods-muviMiruTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -466,6 +679,7 @@
 		};
 		1C2155D81F6E5EA900EA2E8E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D8447E2E6BBF86C9AAE4FF5 /* Pods-muviMiruTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -480,6 +694,7 @@
 		};
 		1C2155DA1F6E5EA900EA2E8E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA6ACAC6E95E063ED390298A /* Pods-muviMiruUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = muviMiruUITests/Info.plist;
@@ -493,6 +708,7 @@
 		};
 		1C2155DB1F6E5EA900EA2E8E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 386B4E41F59E7B9E6C08AF1E /* Pods-muviMiruUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = muviMiruUITests/Info.plist;
