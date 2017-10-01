@@ -15,24 +15,20 @@ class movieDetail: UIViewController {
     
     @IBOutlet weak var myTextView: UITextView!
     
+    @IBOutlet weak var textName: UITextField!
+    
+    @IBOutlet weak var textRelease: UITextField!
+    
+    @IBOutlet weak var textUrl: UITextField!
+    
     @IBOutlet weak var myImageView: UIImageView!
-    
-    @IBOutlet weak var myTextComment: UITextView!
-    
-    //    受け取り用の変数
-    var teaFild1 = ""
-    var teaImage1 = UIImage()
-    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        print("\(scSelectedIndex)行目が押されて移動してきました")
-        myTextView.text = teaFild1
+        print("\(scSelectedIndex)行目が押されて移動してきました")
         
-        myImageView.image = teaImage1
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {

@@ -17,8 +17,9 @@
 		1C2155DD1F6E5F3600EA2E8E /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2155DC1F6E5F3600EA2E8E /* ThirdViewController.swift */; };
 		1C2155E31F6EA02600EA2E8E /* movieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2155E21F6EA02600EA2E8E /* movieDetail.swift */; };
 		1C21575A1F73905A00EA2E8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2157591F73905A00EA2E8E /* Assets.xcassets */; };
-		1C67D3261F794A3900D9CACA /* FontAwesome_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C67D3271F794A3900D9CACA /* FontAwesome_swift.framework */; };
+		1C67D3261F794A3900D9CACA /* FontAwesome_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C67D3271F794A3900D9CACA /* FontAwesome_swift.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		1C67D3291F7A241E00D9CACA /* FontAwsome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C67D3281F7A241E00D9CACA /* FontAwsome.swift */; };
+		1C7F36E01F7F84A10075BDD0 /* movieData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1C7F36DE1F7F84A10075BDD0 /* movieData.xcdatamodeld */; };
 		1CA84D771F7394B40050C03D /* movieSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA84D761F7394B40050C03D /* movieSwipe.swift */; };
 		5FB70ABD4CE6972E03538E03 /* Pods_muviMiruTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09E859A8EF77E31A371821B /* Pods_muviMiruTests.framework */; };
 		BA2C2ABA753D6A65CF071BFB /* Pods_muviMiru.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A648BA1D8EF9958465BCE8 /* Pods_muviMiru.framework */; };
@@ -61,6 +62,7 @@
 		1C2157591F73905A00EA2E8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		1C67D3271F794A3900D9CACA /* FontAwesome_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FontAwesome_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C67D3281F7A241E00D9CACA /* FontAwsome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAwsome.swift; sourceTree = "<group>"; };
+		1C7F36DF1F7F84A10075BDD0 /* movieData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = movieData.xcdatamodel; sourceTree = "<group>"; };
 		1CA84D761F7394B40050C03D /* movieSwipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = movieSwipe.swift; path = ../movieSwipe.swift; sourceTree = "<group>"; };
 		35A0891BE0D30B4C50356AAB /* Pods_muviMiruUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_muviMiruUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		386B4E41F59E7B9E6C08AF1E /* Pods-muviMiruUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muviMiruUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-muviMiruUITests/Pods-muviMiruUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				1C2157591F73905A00EA2E8E /* Assets.xcassets */,
 				1C2155B71F6E5EA800EA2E8E /* LaunchScreen.storyboard */,
 				1C2155BA1F6E5EA800EA2E8E /* Info.plist */,
+				1C7F36DE1F7F84A10075BDD0 /* movieData.xcdatamodeld */,
 			);
 			path = muviMiru;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C7F36E01F7F84A10075BDD0 /* movieData.xcdatamodeld in Sources */,
 				1C67D3291F7A241E00D9CACA /* FontAwsome.swift in Sources */,
 				1C2155B11F6E5EA800EA2E8E /* SecondViewController.swift in Sources */,
 				1CA84D771F7394B40050C03D /* movieSwipe.swift in Sources */,
@@ -760,6 +764,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1C7F36DE1F7F84A10075BDD0 /* movieData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1C7F36DF1F7F84A10075BDD0 /* movieData.xcdatamodel */,
+			);
+			currentVersion = 1C7F36DF1F7F84A10075BDD0 /* movieData.xcdatamodel */;
+			path = movieData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1C2155A11F6E5EA800EA2E8E /* Project object */;
 }

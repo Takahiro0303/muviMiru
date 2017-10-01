@@ -7,17 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     @IBOutlet weak var myTextView: UITableView!
     
     
-    var teaList = ["ダージリン","アールグレイ","アッサム","オレンジペコ"]
-    
-    //    引き渡し用の変数
-    var teaFild = ""
-    var teaImage = UIImage()
+    var contentTitle:[String] = []
     
     var selectedIndex =  -1 //選択された行番号
     
@@ -25,12 +22,43 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        read()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    //    CoreDateに保存されているデータの読み込み（READ）
+    func read(){
+        //AppDelegateを使う用意をしておく
+        let appD:AppDelegate = UIApplication.shared.delegate as!AppDelegate
+        
+        //エンティティを操作するためのオブジェクトを使用
+        let viewContext = appD.persistentContainer.viewContext
+        
+        
+        //どのエンティティからデータを取得してくるか設定
+        let query:NSFetchRequest<Movie> = Movie.fetchRequest()
+        
+        //データ一括取得
+        do{
+            //保存されているデータを全て(fetch)取得
+            let fetchResults = try viewContext.fetch(query)
+            
+            //一件ずつ表示
+            for result:AnyObject in fetchResults{
+                let title:String? = result.value(forKey:"trackName") as? String
+                
+                print("title:\(title!)")
+                
+                contentTitle.append(title as! String)
+            }
+        }catch{
+        }
+    }
+
+    
     //２.行数の決定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return teaList.count
+        return contentTitle.count
     }
     
     //３.リストに表示する文字列を決定し、表示
@@ -40,7 +68,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         //表示したい文字の設定 indexPath.rowが行番号を表す
-        cell.textLabel?.text = teaList[indexPath.row]
+        cell.textLabel?.text = contentTitle[indexPath.row]
         cell.textLabel?.textColor = UIColor.brown
         cell.accessoryType = .disclosureIndicator
         //文字を設定したセルを返す
@@ -49,17 +77,6 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     //    セルがダップされた時、segueを使って画面遷移
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            teaFild = "ダ"
-            
-        }else if indexPath.row == 1 {
-            teaFild = "ア"
-        }else if indexPath.row == 2 {
-            teaFild = "アッ"
-        }else{
-            teaFild = "オ"
-            
-        }
         
         //        選択された行番号を保存
         selectedIndex = indexPath.row
@@ -67,6 +84,10 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         //        セグエを指定して、画面遷移
         performSegue(withIdentifier: "showDetail", sender: nil)
     }
+    
+    
+    
+    
     
     //        セグエを使って画面を移動しようとしている時発動するメソッド
     
@@ -81,9 +102,6 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
         //        作成しておいたプロパティー（メンバ変数）に行番号を保存
         dv.scSelectedIndex = selectedIndex
-        
-        dv.teaFild1 = teaFild
-        dv.teaImage1 = teaImage
         
     }
     

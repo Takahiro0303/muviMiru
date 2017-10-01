@@ -1,4 +1,5 @@
 import UIKit
+import CoreData
 
 class movieSwipe: UIViewController {
     
@@ -9,6 +10,15 @@ class movieSwipe: UIViewController {
     
     //URLを配列に保存
     var movieList:[String] = []
+    
+    //各情報を配列に保存
+    var movieTrackName:[String] = []
+    var movieLongDescription:[String] = []
+    var movietrackTimeMillis:[Int] = []
+    var movieReleaseDate:[String] = []
+    var movieTrackViewUrl:[String] = []
+    
+    
     
     //NSDataの配列
     var movieD:[NSData] = []
@@ -23,10 +33,10 @@ class movieSwipe: UIViewController {
     private var myActivityIndicator: UIActivityIndicatorView!
     
     //背景のView
-    var baseView:UIView = UIView(frame: CGRect(x: 100, y: 200, width: 250, height: 400))
+    var baseView:UIView = UIView(frame: CGRect(x: 100, y: 200, width: 250, height: 270))
     
     //写真を置くUIImageViewの作成
-    var imageView:UIImageView = UIImageView(frame: CGRect(x: 100, y: 200, width: 100, height: 100))
+    var imageView:UIImageView = UIImageView(frame: CGRect(x: 10, y: 20, width: 227, height: 227))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +59,6 @@ class movieSwipe: UIViewController {
         
         baseView.center = CGPoint(x: view.center.x, y: view.center.y - 10)
         
-        imageView.center = CGPoint(x: view.center.x, y: view.center.y - 10)
         
         self.view.addSubview(baseView)
         
@@ -89,7 +98,7 @@ class movieSwipe: UIViewController {
         
         //取得したデータ数だけ繰り返して表示
         for(key,data) in jsonDic{
-            //           print("key:\(key) Data:\(data)")
+           //print("key:\(key) Data:\(data)")
             
             let keys = key as! String
             
@@ -100,73 +109,97 @@ class movieSwipe: UIViewController {
                     
                     let movieData =  a as! NSDictionary
                     
+                    //パッケージの取得
                     let artworkUrl = movieData["artworkUrl100"] as! String
+                    //画質を400×400にする
+                    var replaced = artworkUrl.replacingOccurrences(of: "100x100", with: "400x400") as! String
+                    //配列に入れ込む
+                    movieList.append(replaced as! String)
                     
-                    //print(" Data: \(artworkUrl)")
-                    movieList.append(artworkUrl as! String)
+                    //trackNameの取得
+                    let trackName = movieData["trackName"] as! String
+                    movieTrackName.append(trackName as! String)
+                    //longDescriptionの取得
+                    let longDescription = movieData["longDescription"] as! String
+                    movieLongDescription.append(longDescription as! String)
                     
+                    if movieData["trackTimeMills"] != nil{
+                        //trackTimeMillsの取得
+                        let trackTimeMillis = movieData["trackTimeMillis"] as! Int
+                        movietrackTimeMillis.append(trackTimeMillis as! Int)
+                    }
+                    
+                    //releaseDataの取得
+                    let releaseDate = movieData["releaseDate"] as! String
+                    movieReleaseDate.append(releaseDate as! String)
+                    //trackViewUrlの取得
+                    let trackViewUrl = movieData["trackViewUrl"] as! String
+                    movieTrackViewUrl.append(trackViewUrl as! String)
                 }
             }
         }
         
         //URLから画像の表示
         //初めに表示されるパッケージ
-        let catPictureURL = URL(string: movieList[num])!
-        /*
-         デフォルト設定でセッションオブジェクトを作成する。
-         　*/
-        let session = URLSession(configuration: .default)
-        /*
-         
-         ダウンロードタスクを定義します。ダウンロードタスクは、
-         URLの内容をデータオブジェクトとしてダウンロードし、
-         そのデータで望むことを実行できます。
-         
-         */
-        let downloadPicTask = session.dataTask(with: catPictureURL) { (data, response, error) in
+        //movieListにあるURLの数だけfor文で回す
+        for movie in movieList {
+            let catPictureURL = URL(string: movie)!
             /*
-             ダウンロードが完了しました。
+             デフォルト設定でセッションオブジェクトを作成する。
+             　*/
+            let session = URLSession(configuration: .default)
+            
+            /*
+             
+             ダウンロードタスクを定義します。ダウンロードタスクは、
+             URLの内容をデータオブジェクトとしてダウンロードし、
+             そのデータで望むことを実行できます。
+             
              */
-            if let e = error {
-                print("cat pictureのダウンロード中にエラーが発生しました: \(e)")
-            } else {
+            let downloadPicTask = session.dataTask(with: catPictureURL) { (data, response, error) in
                 /*
-                 エラーは見つかりませんでした。
-                 レスポンスがないと変わってしまいますので、それもチェックしてください。
+                 ダウンロードが完了しました。
                  */
-                if let res = response as? HTTPURLResponse {
-                    print("レスポンスコード付きダウンロード \(res.statusCode)")
-                    if let imageData = data {
-                        /*
-                         最後に、そのデータをイメージに変換し、
-                         */
-                        
-                        let imageimage = UIImage(data: imageData)
-                        print(imageimage!)
-                        self.imageView.image = imageimage
-                    } else {
-                        print("画像を取得できませんでした：画像はありません")
-                    }
+                if let e = error {
+                    print("cat pictureのダウンロード中にエラーが発生しました: \(e)")
                 } else {
-                    print("何らかの理由で応答コードを取得できませんでした")
+                    /*
+                     エラーは見つかりませんでした。
+                     レスポンスがないと変わってしまいますので、それもチェックしてください。
+                     */
+                    if let res = response as? HTTPURLResponse {
+                        print("レスポンスコード付きダウンロード \(res.statusCode)")
+                        if let imageData = data {
+                            self.movieD.append(data as! NSData)
+                            
+                            if self.movieD.count == 1 {
+                                
+                                let imageimage = UIImage(data: imageData)
+                                print(imageimage!)
+                                self.imageView.image = imageimage
+                                
+                            }
+                        } else {
+                            print("画像を取得できませんでした：画像はありません")
+                        }
+                    } else {
+                        print("何らかの理由で応答コードを取得できませんでした")
+                    }
                 }
             }
+            
+            downloadPicTask.resume()
+            
         }
-        
-        downloadPicTask.resume()
     }
 
-    
-    
-    
-    
     //    新しいカードを作成するメソッド
     func newPage(){
         //背景のView
-        var baseView:UIView = UIView(frame: CGRect(x: 100, y: 200, width: 250, height: 400))
+        var baseView:UIView = UIView(frame: CGRect(x: 100, y: 200, width: 250, height: 270))
         
         //写真を置くUIImageViewの作成
-        var imageView:UIImageView = UIImageView(frame: CGRect(x: 100, y: 200, width: 100, height: 100))
+        var imageView:UIImageView = UIImageView(frame: CGRect(x: 10, y: 20, width: 227, height: 227))
         
         //baseView(カード)の色をつける
         baseView.backgroundColor = UIColor.darkGray
@@ -197,112 +230,66 @@ class movieSwipe: UIViewController {
         baseView.layer.shadowOffset = CGSize(width: 5, height: 5) // 距離
         baseView.layer.shadowRadius = 5 // ぼかし量
         
+        number += 1
         
-        //iTunesのAPIからデータ取得
-        //URLを指定して、インターネット経由で取得
-        var url = URL(string: movieplace1)
+        let movieA = movieD[number] as! NSData
+        let movieT = movieTrackName[number]
+        let movieL = movieLongDescription[number]
+        let movieTime = movietrackTimeMillis[number]
+        let movieR = movieReleaseDate[number]
+        let movieU = movieTrackViewUrl[number]
         
-        
-        //インターネットに接続するためのリクエストを作成
-        var request = URLRequest(url: url!)
-        
-        //JSONデータをData型で取得
-        var jasondata = (try! NSURLConnection.sendSynchronousRequest(request, returning: nil))
-        
-        //辞書データに変換
-        let jsonDic = (try! JSONSerialization.jsonObject(with: jasondata, options: [])) as! NSDictionary
-        
-        //取得したデータ数だけ繰り返して表示
-        for(key,data) in jsonDic{
-            //           print("key:\(key) Data:\(data)")
-            
-            let keys = key as! String
-            
-            if keys == "results" {
-                
-                let movie : NSArray = data as! NSArray
-                for a in movie{
-                    
-                    let movieData =  a as! NSDictionary
-                    
-                    let artworkUrl = movieData["artworkUrl100"] as! String
-                    
-                    //print(" Data: \(artworkUrl)")
-                    movieList.append(artworkUrl as! String)
-                    
-                }
-            }
-        }
-            
-            //パッケージの追加
-            num += 1
-            //URLから画像の表示
-            let catPictureURL = URL(string: movieList[num])!
-            
+        if movieA != nil {
             /*
-             デフォルト設定でセッションオブジェクトを作成する。
-             　　*/
-            let session = URLSession(configuration: .default)
-            /*
-             
-             ダウンロードタスクを定義します。ダウンロードタスクは、
-             URLの内容をデータオブジェクトとしてダウンロードし、
-             そのデータで望むことを実行できます。
-             
+             最後に、そのデータをイメージに変換し、
+             それを使って望むことをします。
              */
-            let downloadPicTask = session.dataTask(with: catPictureURL) { (data, response, error) in
-                /*
-                 ダウンロードが完了しました。
-                 */
-                
-                
-                if let e = error {
-                    print("cat pictureのダウンロード中にエラーが発生しました: \(e)")
-                } else {
-                    /*
-                     エラーは見つかりませんでした。
-                     レスポンスがないと変わってしまいますので、それもチェックしてください。
-                     */
-                    if let res = response as? HTTPURLResponse {
-                        print("レスポンスコード付きダウンロード \(res.statusCode)")
-                        self.movieD.append(data as! NSData)
-                        
-                    }
-                }
-            }
-            downloadPicTask.resume()
+            
+            let imageimage = UIImage(data: movieA as Data)
+            print(imageimage!)
+            imageView.image = imageimage
+            
+            /*
+             あなたのイメージで何かをしてください。
+             */
         }
-
-func newEiga(){
-//---------------------------------------------------------------
-//movieDの配列を表示
-
-number += 1
-
-let movieA = movieD[number] as! NSData
-
-if movieA != nil {
-    /*
-     最後に、そのデータをイメージに変換し、
-     それを使って望むことをします。
-     */
-    
-    let imageimage = UIImage(data: movieA as Data)
-    print(imageimage!)
-    imageView.image = imageimage
-    
-    /*
-     あなたのイメージで何かをしてください。
-     */
+        
+        //AppDelegateを使う用意をいておく
+        let appD:AppDelegate = UIApplication.shared.delegate as!AppDelegate
+        
+        //エンティティを操作するためのオブジェクトを作成
+        let viewContext = appD.persistentContainer.viewContext
+        
+        //movieエンティティオブジェクトを作成
+        let movieData = NSEntityDescription.entity(forEntityName: "Movie", in: viewContext)
+        
+        //movieエンティティにレコード（行）を購入するためのオブジェクトを作成
+        let newRecord = NSManagedObject(entity: movieData!, insertInto: viewContext)
+        
+        
+        //値のセット(アトリビュート毎に指定)forkeyはモデルで指定したアトリビュート名
+        newRecord.setValue(movieA, forKey: "artworkYrl")
+        newRecord.setValue(movieTime, forKey: "trackTimeMillis")
+        newRecord.setValue(movieR, forKey: "releaseDate")
+        newRecord.setValue(movieT, forKey: "trackName")
+        newRecord.setValue(movieL, forKey: "longDesciption")
+        newRecord.setValue(movieU, forKey: "trackViewUrl")
+        
+        //レコード（行）の即時保存
+        //        例外表示の書き方
+        do{
+            try viewContext.save()
+        }catch{
+            
+        }
     }
-}
-
+ 
     func panAction(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
         let point = sender.translation(in: view)
         let xFromCenter = card.center.x - view.center.x
         card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
-        print("move")
+        //print("move")
         
 //        if xFromCenter > 0 {
 //            thumbImage.image = #imageLiteral(resourceName: "iThumbsUp")
@@ -321,7 +308,6 @@ if movieA != nil {
                 card.alpha = 0
             })
             self.newPage()
-            self.newEiga()
             return
         }else if card.center.x > (view.frame.width - 75){
             //右に消える
@@ -330,10 +316,10 @@ if movieA != nil {
                 card.alpha = 0
             })
             self.newPage()
-            self.newEiga()
             return
         }
         
+        //指が離れた時に呼ばれる
         if sender.state == UIGestureRecognizerState.ended{
             
             UIView.animate(withDuration: 0.2, animations: {
