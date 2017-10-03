@@ -14,13 +14,13 @@ class movieSwipe: UIViewController {
     //各情報を配列に保存
     var movieTrackName:[String] = []
     var movieLongDescription:[String] = []
-    var movietrackTimeMillis:[Int] = []
+    //var movietrackTimeMillis:[Int] = []
     var movieReleaseDate:[String] = []
     var movieTrackViewUrl:[String] = []
     
     
     
-    //NSDataの配列
+    //パッケージデータの取得、NSDataの配列
     var movieD:[NSData] = []
     
     //NSデータを保存する数
@@ -28,6 +28,14 @@ class movieSwipe: UIViewController {
     
     //パッケージが何番目かを保存する数
     var num = 0
+    
+    var movieArt:[NSData] = []
+    var movieTrack:[String] = []
+    var movieLongD:[String] = []
+    var movieRel:[String] = []
+    var movieTrackU:[String] = []
+    
+    var flag2:[String] = []
     
     //インジケーターの作成
     private var myActivityIndicator: UIActivityIndicatorView!
@@ -91,7 +99,7 @@ class movieSwipe: UIViewController {
         var request = URLRequest(url: url!)
         
         //JSONデータをData型で取得
-        var jasondata = (try! NSURLConnection.sendSynchronousRequest(request, returning: nil))
+        let jasondata = (try! NSURLConnection.sendSynchronousRequest(request, returning: nil))
         
         //辞書データに変換
         let jsonDic = (try! JSONSerialization.jsonObject(with: jasondata, options: [])) as! NSDictionary
@@ -123,11 +131,11 @@ class movieSwipe: UIViewController {
                     let longDescription = movieData["longDescription"] as! String
                     movieLongDescription.append(longDescription as! String)
                     
-                    if movieData["trackTimeMills"] != nil{
-                        //trackTimeMillsの取得
-                        let trackTimeMillis = movieData["trackTimeMillis"] as! Int
-                        movietrackTimeMillis.append(trackTimeMillis as! Int)
-                    }
+//                    if movieData["trackTimeMills"] != nil{
+//                        //trackTimeMillsの取得
+//                        let trackTimeMillis = movieData["trackTimeMillis"] as! Int
+//                        movietrackTimeMillis.append(trackTimeMillis as! Int)
+//                    }
                     
                     //releaseDataの取得
                     let releaseDate = movieData["releaseDate"] as! String
@@ -144,29 +152,15 @@ class movieSwipe: UIViewController {
         //movieListにあるURLの数だけfor文で回す
         for movie in movieList {
             let catPictureURL = URL(string: movie)!
-            /*
-             デフォルト設定でセッションオブジェクトを作成する。
-             　*/
+            
             let session = URLSession(configuration: .default)
             
-            /*
-             
-             ダウンロードタスクを定義します。ダウンロードタスクは、
-             URLの内容をデータオブジェクトとしてダウンロードし、
-             そのデータで望むことを実行できます。
-             
-             */
             let downloadPicTask = session.dataTask(with: catPictureURL) { (data, response, error) in
-                /*
-                 ダウンロードが完了しました。
-                 */
+            
                 if let e = error {
                     print("cat pictureのダウンロード中にエラーが発生しました: \(e)")
                 } else {
-                    /*
-                     エラーは見つかりませんでした。
-                     レスポンスがないと変わってしまいますので、それもチェックしてください。
-                     */
+                  
                     if let res = response as? HTTPURLResponse {
                         print("レスポンスコード付きダウンロード \(res.statusCode)")
                         if let imageData = data {
@@ -231,56 +225,26 @@ class movieSwipe: UIViewController {
         baseView.layer.shadowRadius = 5 // ぼかし量
         
         number += 1
-        
+        //var movieTime = 0
         let movieA = movieD[number] as! NSData
+        movieArt.append(movieA as! NSData)
         let movieT = movieTrackName[number]
+        movieTrack.append(movieT as! String)
         let movieL = movieLongDescription[number]
-        let movieTime = movietrackTimeMillis[number]
+        movieLongD.append(movieL as! String)
+//        if movietrackTimeMillis[number] != nil{
+//        let movieTime = movietrackTimeMillis[number]
+//        }
         let movieR = movieReleaseDate[number]
+        movieRel.append(movieR as! String)
         let movieU = movieTrackViewUrl[number]
+        movieTrackU.append(movieU as! String)
         
         if movieA != nil {
-            /*
-             最後に、そのデータをイメージに変換し、
-             それを使って望むことをします。
-             */
-            
+            //パッケージの出力
             let imageimage = UIImage(data: movieA as Data)
             print(imageimage!)
             imageView.image = imageimage
-            
-            /*
-             あなたのイメージで何かをしてください。
-             */
-        }
-        
-        //AppDelegateを使う用意をいておく
-        let appD:AppDelegate = UIApplication.shared.delegate as!AppDelegate
-        
-        //エンティティを操作するためのオブジェクトを作成
-        let viewContext = appD.persistentContainer.viewContext
-        
-        //movieエンティティオブジェクトを作成
-        let movieData = NSEntityDescription.entity(forEntityName: "Movie", in: viewContext)
-        
-        //movieエンティティにレコード（行）を購入するためのオブジェクトを作成
-        let newRecord = NSManagedObject(entity: movieData!, insertInto: viewContext)
-        
-        
-        //値のセット(アトリビュート毎に指定)forkeyはモデルで指定したアトリビュート名
-        newRecord.setValue(movieA, forKey: "artworkYrl")
-        newRecord.setValue(movieTime, forKey: "trackTimeMillis")
-        newRecord.setValue(movieR, forKey: "releaseDate")
-        newRecord.setValue(movieT, forKey: "trackName")
-        newRecord.setValue(movieL, forKey: "longDesciption")
-        newRecord.setValue(movieU, forKey: "trackViewUrl")
-        
-        //レコード（行）の即時保存
-        //        例外表示の書き方
-        do{
-            try viewContext.save()
-        }catch{
-            
         }
     }
  
@@ -315,6 +279,36 @@ class movieSwipe: UIViewController {
                 card.center.self = CGPoint(x: self.view.center.x + 200, y: card.center.y + 75)
                 card.alpha = 0
             })
+            //AppDelegateを使う用意をいておく
+            let appD:AppDelegate = UIApplication.shared.delegate as!AppDelegate
+            
+            //エンティティを操作するためのオブジェクトを作成
+            let viewContext = appD.persistentContainer.viewContext
+            
+            //movieエンティティオブジェクトを作成
+            let movieData = NSEntityDescription.entity(forEntityName: "Movie", in: viewContext)
+            
+            //movieエンティティにレコード（行）を購入するためのオブジェクトを作成
+            let newRecord = NSManagedObject(entity: movieData!, insertInto: viewContext)
+            
+            
+            //値のセット(アトリビュート毎に指定)forkeyはモデルで指定したアトリビュート名
+            newRecord.setValue(movieArt, forKey: "artworkYrl")
+            //newRecord.setValue(movieTime, forKey: "trackTimeMillis")
+            newRecord.setValue(movieRel, forKey: "releaseDate")
+            newRecord.setValue(movieTrack, forKey: "trackName")
+            newRecord.setValue(movieLongD, forKey: "longDesciption")
+            newRecord.setValue(movieTrackU, forKey: "trackViewUrl")
+            
+            //レコード（行）の即時保存
+            //        例外表示の書き方
+            do{
+                try viewContext.save()
+            }catch{
+                
+            }
+
+            
             self.newPage()
             return
         }

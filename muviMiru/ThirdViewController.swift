@@ -15,7 +15,11 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     
     var contentTitle:[String] = []
-    
+    var contentArtWork:[String] = []
+    var contentDescription:[String] = []
+    var contentRelease:[String] = []
+    var contentTime:[Int] = []
+    var contentUrl:[String] = []
     var selectedIndex =  -1 //選択された行番号
     
     
@@ -46,10 +50,23 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             //一件ずつ表示
             for result:AnyObject in fetchResults{
                 let title:String? = result.value(forKey:"trackName") as? String
+                let artWork:String? = result.value(forKey:"artworkUrl") as? String
+                let longDescription:String? = result.value(forKey:"longDescription") as? String
+                let releaseDate:String? = result.value(forKey:"releaseDate") as? String
+                let trackTimeMillis:Int? = result.value(forKey:"trackTimeMillis") as? Int
+                let trackViewUrl:String? = result.value(forKey:"trackViewUrl") as? String
+                
                 
                 print("title:\(title!)")
                 
                 contentTitle.append(title as! String)
+                contentArtWork.append(artWork as! String)
+                contentDescription.append(longDescription as! String)
+                contentRelease.append(releaseDate as! String)
+                contentTime.append(trackTimeMillis as! Int)
+                contentUrl.append(trackViewUrl as! String)
+                
+                
             }
         }catch{
         }
