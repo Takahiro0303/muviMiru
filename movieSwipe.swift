@@ -29,13 +29,15 @@ class movieSwipe: UIViewController {
     //パッケージが何番目かを保存する数
     var num = 0
     
-    var movieArt:[NSData] = []
-    var movieTrack:[String] = []
-    var movieLongD:[String] = []
-    var movieRel:[String] = []
-    var movieTrackU:[String] = []
     
-    var flag2:[String] = []
+    
+    //コアデータに入れたいデータの保存
+    var artWork = ""
+    var trackName = ""
+    var longDescription = ""
+    var releaseDate = ""
+    var trackViewUrl = ""
+    
     
     //インジケーターの作成
     private var myActivityIndicator: UIActivityIndicatorView!
@@ -63,7 +65,7 @@ class movieSwipe: UIViewController {
         
         
         //baseView(カード)の色をつける
-        baseView.backgroundColor = UIColor.darkGray
+        baseView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         
         baseView.center = CGPoint(x: view.center.x, y: view.center.y - 10)
         
@@ -85,7 +87,7 @@ class movieSwipe: UIViewController {
         
         baseView.layer.cornerRadius = 10
         baseView.layer.masksToBounds = false
-        baseView.layer.shadowColor = UIColor.black.cgColor
+        baseView.layer.shadowColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1).cgColor
         baseView.layer.shadowOpacity = 0.5 // 透明度
         baseView.layer.shadowOffset = CGSize(width: 5, height: 5) // 距離
         baseView.layer.shadowRadius = 5 // ぼかし量
@@ -196,7 +198,7 @@ class movieSwipe: UIViewController {
         var imageView:UIImageView = UIImageView(frame: CGRect(x: 10, y: 20, width: 227, height: 227))
         
         //baseView(カード)の色をつける
-        baseView.backgroundColor = UIColor.darkGray
+        baseView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         
         baseView.center = CGPoint(x: view.center.x, y: view.center.y - 10)
         
@@ -219,26 +221,32 @@ class movieSwipe: UIViewController {
         
         baseView.layer.cornerRadius = 10
         baseView.layer.masksToBounds = false
-        baseView.layer.shadowColor = UIColor.black.cgColor
+        baseView.layer.shadowColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1).cgColor
         baseView.layer.shadowOpacity = 0.5 // 透明度
         baseView.layer.shadowOffset = CGSize(width: 5, height: 5) // 距離
         baseView.layer.shadowRadius = 5 // ぼかし量
         
         number += 1
-        //var movieTime = 0
         let movieA = movieD[number] as! NSData
-        movieArt.append(movieA as! NSData)
+        
+        
+        artWork = movieList[number]
+        
         let movieT = movieTrackName[number]
-        movieTrack.append(movieT as! String)
+        trackName = movieT
+        
         let movieL = movieLongDescription[number]
-        movieLongD.append(movieL as! String)
-//        if movietrackTimeMillis[number] != nil{
-//        let movieTime = movietrackTimeMillis[number]
-//        }
+        longDescription = movieL
+        
+        //        if movietrackTimeMillis[number] != nil{
+        //        let movieTime = movietrackTimeMillis[number]
+        //        }
         let movieR = movieReleaseDate[number]
-        movieRel.append(movieR as! String)
+        releaseDate = movieR
+        
         let movieU = movieTrackViewUrl[number]
-        movieTrackU.append(movieU as! String)
+        trackViewUrl = movieU
+
         
         if movieA != nil {
             //パッケージの出力
@@ -279,6 +287,8 @@ class movieSwipe: UIViewController {
                 card.center.self = CGPoint(x: self.view.center.x + 200, y: card.center.y + 75)
                 card.alpha = 0
             })
+            self.newPage()
+            
             //AppDelegateを使う用意をいておく
             let appD:AppDelegate = UIApplication.shared.delegate as!AppDelegate
             
@@ -291,14 +301,19 @@ class movieSwipe: UIViewController {
             //movieエンティティにレコード（行）を購入するためのオブジェクトを作成
             let newRecord = NSManagedObject(entity: movieData!, insertInto: viewContext)
             
-            
+            print("アートワーク"+artWork)
+            print("名前"+trackName)
+            print("説明"+longDescription)
+            print("日付"+releaseDate)
+            print("URL"+trackViewUrl)
             //値のセット(アトリビュート毎に指定)forkeyはモデルで指定したアトリビュート名
-            newRecord.setValue(movieArt, forKey: "artworkYrl")
+            newRecord.setValue(artWork, forKey: "artworkUrl")
+            print(artWork)
             //newRecord.setValue(movieTime, forKey: "trackTimeMillis")
-            newRecord.setValue(movieRel, forKey: "releaseDate")
-            newRecord.setValue(movieTrack, forKey: "trackName")
-            newRecord.setValue(movieLongD, forKey: "longDesciption")
-            newRecord.setValue(movieTrackU, forKey: "trackViewUrl")
+            newRecord.setValue(releaseDate, forKey: "releaseDate")
+            newRecord.setValue(trackName, forKey: "trackName")
+            newRecord.setValue(longDescription, forKey: "longDescription")
+            newRecord.setValue(trackViewUrl, forKey: "trackViewUrl")
             
             //レコード（行）の即時保存
             //        例外表示の書き方
@@ -307,9 +322,6 @@ class movieSwipe: UIViewController {
             }catch{
                 
             }
-
-            
-            self.newPage()
             return
         }
         
