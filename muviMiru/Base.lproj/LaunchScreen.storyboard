@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,39 +19,47 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jakob-owens-199503" translatesAutoresizingMaskIntoConstraints="NO" id="I0C-PZ-tzg">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="さあ、あなたの直感で映画を選んで見ませんか？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mib-fa-9oQ">
-                                <rect key="frame" x="27" y="434" width="340" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ムビみる" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SlX-qR-fpE">
+                                <rect key="frame" x="76" y="230" width="192" height="80"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ムビみる" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SlX-qR-fpE">
-                                <rect key="frame" x="96" y="274" width="202" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　さあ、あなたの直感で映画を選んで見ませんか？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mib-fa-9oQ">
+                                <rect key="frame" x="28" y="318" width="288" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="R76-v0-jTO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="I0C-PZ-tzg" secondAttribute="trailing" id="PSV-s7-rjb"/>
-                            <constraint firstItem="I0C-PZ-tzg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Pkv-G2-5Fh"/>
-                            <constraint firstItem="I0C-PZ-tzg" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="kne-9f-Jbo"/>
-                            <constraint firstItem="I0C-PZ-tzg" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="o3c-Lq-8WC"/>
+                            <constraint firstItem="SlX-qR-fpE" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="60" id="4bd-Ae-aMj"/>
+                            <constraint firstItem="I0C-PZ-tzg" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="EoG-AP-YZ3"/>
+                            <constraint firstItem="SlX-qR-fpE" firstAttribute="centerX" secondItem="Mib-fa-9oQ" secondAttribute="centerX" id="FGm-1B-5O7"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Mib-fa-9oQ" secondAttribute="bottom" constant="230" id="Hut-Rh-T2m"/>
+                            <constraint firstItem="I0C-PZ-tzg" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="If1-kR-Vee"/>
+                            <constraint firstAttribute="trailing" secondItem="I0C-PZ-tzg" secondAttribute="trailing" id="Ix1-7S-3wD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mib-fa-9oQ" secondAttribute="trailing" constant="-12" id="OON-Kz-8ua"/>
+                            <constraint firstItem="Mib-fa-9oQ" firstAttribute="top" secondItem="SlX-qR-fpE" secondAttribute="bottom" constant="8" symbolic="YES" id="ZpH-GH-AtR"/>
+                            <constraint firstItem="Mib-fa-9oQ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="12" id="nuW-h9-279"/>
+                            <constraint firstItem="SlX-qR-fpE" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="210" id="srI-fH-2rO"/>
+                            <constraint firstItem="I0C-PZ-tzg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="u9M-5J-1ZR"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="50.625" y="373.94366197183098"/>
         </scene>
     </scenes>
     <resources>

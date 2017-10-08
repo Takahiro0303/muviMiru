@@ -3,6 +3,9 @@ import CoreData
 
 class movieSwipe: UIViewController {
     
+    
+    var divisor : CGFloat!
+    
     var scSelectedIndex = -1
     
     //前ページの情報を引き継ぐ
@@ -43,10 +46,10 @@ class movieSwipe: UIViewController {
     private var myActivityIndicator: UIActivityIndicatorView!
     
     //背景のView
-    var baseView:UIView = UIView(frame: CGRect(x: 100, y: 200, width: 250, height: 270))
+    var baseView:UIView = UIView(frame: CGRect(x: 10, y: 50, width: 300, height: 420))
     
     //写真を置くUIImageViewの作成
-    var imageView:UIImageView = UIImageView(frame: CGRect(x: 10, y: 20, width: 227, height: 227))
+    var imageView:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290 , height: 390))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +70,7 @@ class movieSwipe: UIViewController {
         //baseView(カード)の色をつける
         baseView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         
-        baseView.center = CGPoint(x: view.center.x, y: view.center.y - 10)
+        //baseView.center = CGPoint(x: view.center.x, y: view.center.y - 10)
         
         
         self.view.addSubview(baseView)
@@ -87,7 +90,7 @@ class movieSwipe: UIViewController {
         
         baseView.layer.cornerRadius = 10
         baseView.layer.masksToBounds = false
-        baseView.layer.shadowColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1).cgColor
+        baseView.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1).cgColor
         baseView.layer.shadowOpacity = 0.5 // 透明度
         baseView.layer.shadowOffset = CGSize(width: 5, height: 5) // 距離
         baseView.layer.shadowRadius = 5 // ぼかし量
@@ -192,15 +195,15 @@ class movieSwipe: UIViewController {
     //    新しいカードを作成するメソッド
     func newPage(){
         //背景のView
-        var baseView:UIView = UIView(frame: CGRect(x: 100, y: 200, width: 250, height: 270))
+        var baseView:UIView = UIView(frame: CGRect(x: 10, y: 50, width: 300, height: 420))
         
         //写真を置くUIImageViewの作成
-        var imageView:UIImageView = UIImageView(frame: CGRect(x: 10, y: 20, width: 227, height: 227))
+        var imageView:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290, height: 390))
         
         //baseView(カード)の色をつける
         baseView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         
-        baseView.center = CGPoint(x: view.center.x, y: view.center.y - 10)
+        //baseView.center = CGPoint(x: view.center.x, y: view.center.y - 10)
         
         self.view.addSubview(baseView)
         
@@ -221,48 +224,87 @@ class movieSwipe: UIViewController {
         
         baseView.layer.cornerRadius = 10
         baseView.layer.masksToBounds = false
-        baseView.layer.shadowColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1).cgColor
+        baseView.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1).cgColor
         baseView.layer.shadowOpacity = 0.5 // 透明度
         baseView.layer.shadowOffset = CGSize(width: 5, height: 5) // 距離
         baseView.layer.shadowRadius = 5 // ぼかし量
         
-        number += 1
-        let movieA = movieD[number] as! NSData
-        
-        
-        artWork = movieList[number]
-        
-        let movieT = movieTrackName[number]
-        trackName = movieT
-        
-        let movieL = movieLongDescription[number]
-        longDescription = movieL
-        
-        //        if movietrackTimeMillis[number] != nil{
-        //        let movieTime = movietrackTimeMillis[number]
-        //        }
-        let movieR = movieReleaseDate[number]
-        releaseDate = movieR
-        
-        let movieU = movieTrackViewUrl[number]
-        trackViewUrl = movieU
 
+        number += 1
         
-        if movieA != nil {
-            //パッケージの出力
-            let imageimage = UIImage(data: movieA as Data)
-            print(imageimage!)
-            imageView.image = imageimage
+        if number == 0{
+            let movieA = movieD[0] as! NSData
+            
+            
+            artWork = movieList[0]
+            
+            let movieT = movieTrackName[0]
+            trackName = movieT
+            print(movieT)
+            
+            let movieL = movieLongDescription[0]
+            longDescription = movieL
+            
+            //        if movietrackTimeMillis[number] != nil{
+            //        let movieTime = movietrackTimeMillis[number]
+            //        }
+            let movieR = movieReleaseDate[0]
+            releaseDate = movieR
+            
+            let movieU = movieTrackViewUrl[0]
+            trackViewUrl = movieU
+            
+            if movieA != nil {
+                //パッケージの出力
+                let imageimage = UIImage(data: movieA as Data)
+                print(imageimage!)
+                imageView.image = imageimage
+            }
+            
+        }else{
+        
+            
+            let movieA = movieD[number] as! NSData
+            
+            
+            artWork = movieList[number]
+            
+            let movieT = movieTrackName[number]
+            trackName = movieT
+            print(movieT)
+            
+            let movieL = movieLongDescription[number]
+            longDescription = movieL
+            
+            //        if movietrackTimeMillis[number] != nil{
+            //        let movieTime = movietrackTimeMillis[number]
+            //        }
+            let movieR = movieReleaseDate[number]
+            releaseDate = movieR
+            
+            let movieU = movieTrackViewUrl[number]
+            trackViewUrl = movieU
+            
+            if movieA != nil {
+                //パッケージの出力
+                let imageimage = UIImage(data: movieA as Data)
+                print(imageimage!)
+                imageView.image = imageimage
+            }
         }
+        
+        
     }
  
+    
+//　　　　gesturePanメソッド
     func panAction(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
         let point = sender.translation(in: view)
         let xFromCenter = card.center.x - view.center.x
-        card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
+        //card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
+        card.center = CGPoint(x: card.center.x + (point.x)/4, y: card.center.y + (point.y/4))
         //print("move")
-        
 //        if xFromCenter > 0 {
 //            thumbImage.image = #imageLiteral(resourceName: "iThumbsUp")
 //            thumbImage.tintColor = UIColor.green
@@ -272,8 +314,10 @@ class movieSwipe: UIViewController {
 //        }
 //
 //        thumbImage.alpha = abs(xFromCenter) / view.center.x
+        //指が離れた時に呼ばれる
+        if sender.state == UIGestureRecognizerState.ended{
         
-        if card.center.x < 75 {
+            if card.center.x < 75 {
             //左に消える
             UIView.animate(withDuration: 0.3, animations: {
                 card.center = CGPoint(x: self.view.center.x - 200, y: card.center.y + 75)
@@ -281,7 +325,7 @@ class movieSwipe: UIViewController {
             })
             self.newPage()
             return
-        }else if card.center.x > (view.frame.width - 75){
+            }else if card.center.x > (view.frame.width - 75){
             //右に消える
             UIView.animate(withDuration: 0.3, animations: {
                 card.center.self = CGPoint(x: self.view.center.x + 200, y: card.center.y + 75)
@@ -308,7 +352,6 @@ class movieSwipe: UIViewController {
             print("URL"+trackViewUrl)
             //値のセット(アトリビュート毎に指定)forkeyはモデルで指定したアトリビュート名
             newRecord.setValue(artWork, forKey: "artworkUrl")
-            print(artWork)
             //newRecord.setValue(movieTime, forKey: "trackTimeMillis")
             newRecord.setValue(releaseDate, forKey: "releaseDate")
             newRecord.setValue(trackName, forKey: "trackName")
@@ -323,11 +366,11 @@ class movieSwipe: UIViewController {
                 
             }
             return
-        }
+            }
         
-        //指が離れた時に呼ばれる
-        if sender.state == UIGestureRecognizerState.ended{
-            
+//        //指が離れた時に呼ばれる
+//        if sender.state == UIGestureRecognizerState.ended{
+        
             UIView.animate(withDuration: 0.2, animations: {
                 card.center = self.view.center
 //                self.thumbImage.alpha = 0

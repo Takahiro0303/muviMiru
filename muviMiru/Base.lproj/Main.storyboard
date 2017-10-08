@@ -17,7 +17,6 @@
         <!--First View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="muviMiru" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
@@ -51,8 +50,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" image="tabBarItem:acW-dT-cKf:image" selectedImage="tabBarItem:acW-dT-cKf:image" id="acW-dT-cKf" colorLabel="IBBuiltInLabel-Orange"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320.07042253521126"/>
+            <point key="canvasLocation" x="750" y="-632"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="wg7-f3-ORb">
@@ -115,7 +115,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOF-gK-Mhs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="6nA-w8-Kma"/>
             </objects>
-            <point key="canvasLocation" x="1552.5" y="362.32394366197184"/>
+            <point key="canvasLocation" x="2063" y="361"/>
         </scene>
         <!--Third View Controller-->
         <scene sceneID="Exf-0p-4yq">
@@ -159,7 +159,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ki0-2r-qTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="755.625" y="1056.338028169014"/>
+            <point key="canvasLocation" x="750" y="1482"/>
         </scene>
         <!--Movie Detail-->
         <scene sceneID="mGh-dO-gLV">
@@ -240,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rgp-iR-pfc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1575" y="1055.2816901408451"/>
+            <point key="canvasLocation" x="2063" y="1482"/>
         </scene>
         <!--Font Awsome-->
         <scene sceneID="yl2-sM-qoP">
@@ -260,7 +260,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-1494" y="361"/>
         </scene>
     </scenes>
     <resources>
