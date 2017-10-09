@@ -13,9 +13,9 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     @IBOutlet weak var myTextView: UITableView!
     
-    
     var contentTitle:[String] = []
     var contentArtWork:[String] = []
+    
     var contentDescription:[String] = []
     var contentRelease:[String] = []
     var contentTime:[Int] = []
@@ -57,10 +57,33 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
                 let trackViewUrl:String? = result.value(forKey:"trackViewUrl") as? String
                 
                 
-                print("title:\(title!)")
+                let catPictureURL = URL(string: "artWork")!
+                let session = URLSession(configuration: .default)
+                let downloadPicTask = session.dataTask(with: catPictureURL) { (data, response, error) in
+                    if let e = error {
+                        print("cat pictureのダウンロード中にエラーが発生しました: \(e)")
+                    } else {
+                       if let res = response as? HTTPURLResponse {
+                        print("レスポンスコード付き画像ダウンロード \(res.statusCode)")
+                        contentArtWork.append(data as! String)
+//                        if let imageData = data {
+//
+//                                let imageimage = UIImage(data: imageData)
+//                                print(imageimage!)
+//                                self.templateThumbnailImageView.image = imageimage
+//                            }
+                        }
+                    }
+                }
+                
+                downloadPicTask.resume()
+                
+                
+                
+                //print("title:\(title!)")
                 
                 contentTitle.append(title as! String)
-                contentArtWork.append(artWork as! String)
+                
                 contentDescription.append(longDescription as! String)
                 contentRelease.append(releaseDate as! String)
                 contentTime.append(trackTimeMillis as! Int)
@@ -85,7 +108,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         //表示したい文字の設定 indexPath.rowが行番号を表す
-        cell.textLabel?.text = contentTitle[indexPath.row]
+        cell.movieLavel?.text = contentTitle[indexPath.row]
+        //cell.movieImage?.image = 
         cell.textLabel?.textColor = UIColor.brown
         cell.accessoryType = .disclosureIndicator
         //文字を設定したセルを返す

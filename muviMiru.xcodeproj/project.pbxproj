@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1C2155AD1F6E5EA800EA2E8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2155AC1F6E5EA800EA2E8E /* AppDelegate.swift */; };
-		1C2155AF1F6E5EA800EA2E8E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2155AE1F6E5EA800EA2E8E /* FirstViewController.swift */; };
 		1C2155B11F6E5EA800EA2E8E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2155B01F6E5EA800EA2E8E /* SecondViewController.swift */; };
 		1C2155B41F6E5EA800EA2E8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C2155B21F6E5EA800EA2E8E /* Main.storyboard */; };
 		1C2155B91F6E5EA800EA2E8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C2155B71F6E5EA800EA2E8E /* LaunchScreen.storyboard */; };
@@ -21,6 +20,7 @@
 		1C67D3291F7A241E00D9CACA /* FontAwsome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C67D3281F7A241E00D9CACA /* FontAwsome.swift */; };
 		1C7F36E01F7F84A10075BDD0 /* movieData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1C7F36DE1F7F84A10075BDD0 /* movieData.xcdatamodeld */; };
 		1CA84D771F7394B40050C03D /* movieSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA84D761F7394B40050C03D /* movieSwipe.swift */; };
+		1CC5DE6A1F8BB66200B705AB /* ThirdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC5DE691F8BB66200B705AB /* ThirdTableViewCell.swift */; };
 		5FB70ABD4CE6972E03538E03 /* Pods_muviMiruTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09E859A8EF77E31A371821B /* Pods_muviMiruTests.framework */; };
 		BA2C2ABA753D6A65CF071BFB /* Pods_muviMiru.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A648BA1D8EF9958465BCE8 /* Pods_muviMiru.framework */; };
 		F0C7B778C23B2C127A8820CD /* Pods_muviMiruUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A0891BE0D30B4C50356AAB /* Pods_muviMiruUITests.framework */; };
@@ -46,7 +46,6 @@
 /* Begin PBXFileReference section */
 		1C2155A91F6E5EA800EA2E8E /* muviMiru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = muviMiru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C2155AC1F6E5EA800EA2E8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1C2155AE1F6E5EA800EA2E8E /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		1C2155B01F6E5EA800EA2E8E /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		1C2155B31F6E5EA800EA2E8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1C2155B81F6E5EA800EA2E8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,6 +63,7 @@
 		1C67D3281F7A241E00D9CACA /* FontAwsome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAwsome.swift; sourceTree = "<group>"; };
 		1C7F36DF1F7F84A10075BDD0 /* movieData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = movieData.xcdatamodel; sourceTree = "<group>"; };
 		1CA84D761F7394B40050C03D /* movieSwipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = movieSwipe.swift; path = ../movieSwipe.swift; sourceTree = "<group>"; };
+		1CC5DE691F8BB66200B705AB /* ThirdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTableViewCell.swift; sourceTree = "<group>"; };
 		35A0891BE0D30B4C50356AAB /* Pods_muviMiruUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_muviMiruUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		386B4E41F59E7B9E6C08AF1E /* Pods-muviMiruUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muviMiruUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-muviMiruUITests/Pods-muviMiruUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8D8447E2E6BBF86C9AAE4FF5 /* Pods-muviMiruTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muviMiruTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-muviMiruTests/Pods-muviMiruTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -130,11 +130,11 @@
 			isa = PBXGroup;
 			children = (
 				1C2155AC1F6E5EA800EA2E8E /* AppDelegate.swift */,
-				1C2155AE1F6E5EA800EA2E8E /* FirstViewController.swift */,
 				1C2155B01F6E5EA800EA2E8E /* SecondViewController.swift */,
 				1CA84D761F7394B40050C03D /* movieSwipe.swift */,
 				1C2155B21F6E5EA800EA2E8E /* Main.storyboard */,
 				1C2155DC1F6E5F3600EA2E8E /* ThirdViewController.swift */,
+				1CC5DE691F8BB66200B705AB /* ThirdTableViewCell.swift */,
 				1C2155E21F6EA02600EA2E8E /* movieDetail.swift */,
 				1C67D3281F7A241E00D9CACA /* FontAwsome.swift */,
 				1C2157591F73905A00EA2E8E /* Assets.xcassets */,
@@ -482,13 +482,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C7F36E01F7F84A10075BDD0 /* movieData.xcdatamodeld in Sources */,
+				1CC5DE6A1F8BB66200B705AB /* ThirdTableViewCell.swift in Sources */,
 				1C67D3291F7A241E00D9CACA /* FontAwsome.swift in Sources */,
 				1C2155B11F6E5EA800EA2E8E /* SecondViewController.swift in Sources */,
 				1CA84D771F7394B40050C03D /* movieSwipe.swift in Sources */,
 				1C2155E31F6EA02600EA2E8E /* movieDetail.swift in Sources */,
 				1C2155DD1F6E5F3600EA2E8E /* ThirdViewController.swift in Sources */,
 				1C2155AD1F6E5EA800EA2E8E /* AppDelegate.swift in Sources */,
-				1C2155AF1F6E5EA800EA2E8E /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,7 +3,6 @@ import CoreData
 
 class movieSwipe: UIViewController {
     
-    
     var divisor : CGFloat!
     
     var scSelectedIndex = -1
@@ -17,11 +16,8 @@ class movieSwipe: UIViewController {
     //各情報を配列に保存
     var movieTrackName:[String] = []
     var movieLongDescription:[String] = []
-    //var movietrackTimeMillis:[Int] = []
     var movieReleaseDate:[String] = []
     var movieTrackViewUrl:[String] = []
-    
-    
     
     //パッケージデータの取得、NSDataの配列
     var movieD:[NSData] = []
@@ -46,7 +42,7 @@ class movieSwipe: UIViewController {
     private var myActivityIndicator: UIActivityIndicatorView!
     
     //背景のView
-    var baseView:UIView = UIView(frame: CGRect(x: 10, y: 50, width: 300, height: 420))
+    var baseView:UIView = UIView(frame: CGRect(x: 10, y: 80, width: 300, height: 420))
     
     //写真を置くUIImageViewの作成
     var imageView:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290 , height: 390))
@@ -190,12 +186,28 @@ class movieSwipe: UIViewController {
             downloadPicTask.resume()
             
         }
+        
+        
+        artWork = movieList[0]
+        
+        let movieT = movieTrackName[0]
+        trackName = movieT
+        
+        let movieL = movieLongDescription[0]
+        longDescription = movieL
+        
+        let movieR = movieReleaseDate[0]
+        releaseDate = movieR
+        
+        let movieU = movieTrackViewUrl[0]
+        trackViewUrl = movieU
+        
     }
 
     //    新しいカードを作成するメソッド
     func newPage(){
         //背景のView
-        var baseView:UIView = UIView(frame: CGRect(x: 10, y: 50, width: 300, height: 420))
+        var baseView:UIView = UIView(frame: CGRect(x: 10, y: 80, width: 300, height: 420))
         
         //写真を置くUIImageViewの作成
         var imageView:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290, height: 390))
@@ -232,38 +244,6 @@ class movieSwipe: UIViewController {
 
         number += 1
         
-        if number == 0{
-            let movieA = movieD[0] as! NSData
-            
-            
-            artWork = movieList[0]
-            
-            let movieT = movieTrackName[0]
-            trackName = movieT
-            print(movieT)
-            
-            let movieL = movieLongDescription[0]
-            longDescription = movieL
-            
-            //        if movietrackTimeMillis[number] != nil{
-            //        let movieTime = movietrackTimeMillis[number]
-            //        }
-            let movieR = movieReleaseDate[0]
-            releaseDate = movieR
-            
-            let movieU = movieTrackViewUrl[0]
-            trackViewUrl = movieU
-            
-            if movieA != nil {
-                //パッケージの出力
-                let imageimage = UIImage(data: movieA as Data)
-                print(imageimage!)
-                imageView.image = imageimage
-            }
-            
-        }else{
-        
-            
             let movieA = movieD[number] as! NSData
             
             
@@ -291,7 +271,7 @@ class movieSwipe: UIViewController {
                 print(imageimage!)
                 imageView.image = imageimage
             }
-        }
+        
         
         
     }
@@ -314,6 +294,8 @@ class movieSwipe: UIViewController {
 //        }
 //
 //        thumbImage.alpha = abs(xFromCenter) / view.center.x
+        
+        
         //指が離れた時に呼ばれる
         if sender.state == UIGestureRecognizerState.ended{
         
@@ -352,7 +334,6 @@ class movieSwipe: UIViewController {
             print("URL"+trackViewUrl)
             //値のセット(アトリビュート毎に指定)forkeyはモデルで指定したアトリビュート名
             newRecord.setValue(artWork, forKey: "artworkUrl")
-            //newRecord.setValue(movieTime, forKey: "trackTimeMillis")
             newRecord.setValue(releaseDate, forKey: "releaseDate")
             newRecord.setValue(trackName, forKey: "trackName")
             newRecord.setValue(longDescription, forKey: "longDescription")
@@ -368,8 +349,6 @@ class movieSwipe: UIViewController {
             return
             }
         
-//        //指が離れた時に呼ばれる
-//        if sender.state == UIGestureRecognizerState.ended{
         
             UIView.animate(withDuration: 0.2, animations: {
                 card.center = self.view.center
