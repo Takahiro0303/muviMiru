@@ -29,7 +29,6 @@ class movieSwipe: UIViewController {
     var num = 0
     
     
-    
     //コアデータに入れたいデータの保存
     var artWork = ""
     var trackName = ""
@@ -37,9 +36,6 @@ class movieSwipe: UIViewController {
     var releaseDate = ""
     var trackViewUrl = ""
     
-    
-    //インジケーターの作成
-    private var myActivityIndicator: UIActivityIndicatorView!
     
     //背景のView
     var baseView:UIView = UIView(frame: CGRect(x: 10, y: 80, width: 300, height: 420))
@@ -51,29 +47,6 @@ class movieSwipe: UIViewController {
         super.viewDidLoad()
         
         viewOn()
-        
-//        //baseView(カード)の色をつける
-//        baseView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-//
-//        self.view.addSubview(baseView)
-//
-//        //        スワイプを定義
-//        let Pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(_:)))
-//        //        baseViewにジェスチャーを登録
-//        self.baseView.addGestureRecognizer(Pan)
-//
-//        //画像の表示を可能にするコード
-//        imageView.isUserInteractionEnabled = true
-//
-//        // baseViewの上にmyPictureを載せる
-//        self.baseView.addSubview(imageView)
-//
-//        baseView.layer.cornerRadius = 10
-//        baseView.layer.masksToBounds = false
-//        baseView.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1).cgColor
-//        baseView.layer.shadowOpacity = 0.5 // 透明度
-//        baseView.layer.shadowOffset = CGSize(width: 5, height: 5) // 距離
-//        baseView.layer.shadowRadius = 5 // ぼかし量
         
         //iTunesのAPIからデータ取得
         //URLを指定して、インターネット経由で取得
@@ -115,12 +88,6 @@ class movieSwipe: UIViewController {
                     //longDescriptionの取得
                     let longDescription = movieData["longDescription"] as! String
                     movieLongDescription.append(longDescription as! String)
-                    
-//                    if movieData["trackTimeMills"] != nil{
-//                        //trackTimeMillsの取得
-//                        let trackTimeMillis = movieData["trackTimeMillis"] as! Int
-//                        movietrackTimeMillis.append(trackTimeMillis as! Int)
-//                    }
                     
                     //releaseDataの取得
                     let releaseDate = movieData["releaseDate"] as! String
@@ -190,19 +157,10 @@ class movieSwipe: UIViewController {
 
     //    新しいカードを作成するメソッド
     func newPage(){
-        //背景のView
-        var baseView:UIView = UIView(frame: CGRect(x: 10, y: 80, width: 300, height: 420))
-        
-        //写真を置くUIImageViewの作成
-        var imageView:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290, height: 390))
         
         viewOn()
 
         number += 1
-        
-            let movieA = movieD[number] as! NSData
-            
-            
             artWork = movieList[number]
             
             let movieT = movieTrackName[number]
@@ -220,16 +178,6 @@ class movieSwipe: UIViewController {
             
             let movieU = movieTrackViewUrl[number]
             trackViewUrl = movieU
-            
-            if movieA != nil {
-                //パッケージの出力
-                let imageimage = UIImage(data: movieA as Data)
-                print(imageimage!)
-                imageView.image = imageimage
-            }
-        
-        
-        
     }
  
     
@@ -294,6 +242,7 @@ class movieSwipe: UIViewController {
             newRecord.setValue(trackName, forKey: "trackName")
             newRecord.setValue(longDescription, forKey: "longDescription")
             newRecord.setValue(trackViewUrl, forKey: "trackViewUrl")
+            newRecord.setValue(Data(), forKey: "saveDate")
             
             //レコード（行）の即時保存
             //        例外表示の書き方
@@ -316,6 +265,14 @@ class movieSwipe: UIViewController {
     }
     
     func viewOn() {
+        //背景のView
+        var baseView:UIView = UIView(frame: CGRect(x: 10, y: 80, width: 300, height: 420))
+        
+        //写真を置くUIImageViewの作成
+        var imageView:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290 , height: 390))
+
+        
+        
         //baseView(カード)の色をつける
         baseView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         
@@ -324,7 +281,6 @@ class movieSwipe: UIViewController {
         // baseViewの上にmyPictureを載せる
         self.baseView.addSubview(imageView)
         
-        
         //スワイプを定義
         let Pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(_:)))
         //baseViewにジェスチャーを登録
@@ -332,6 +288,16 @@ class movieSwipe: UIViewController {
         
         //画像の表示を可能にするコード
         imageView.isUserInteractionEnabled = true
+        
+        if movieD.count > 0 {
+            let movieA = movieD[number] as! NSData
+        if movieA != nil {
+            //パッケージの出力
+            let imageimage = UIImage(data: movieA as Data)
+            print(imageimage!)
+            imageView.image = imageimage
+        }
+        }
         
         //baseViewの上にmyPictureを載せる
         baseView.addSubview(imageView)

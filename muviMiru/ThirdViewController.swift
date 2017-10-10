@@ -15,11 +15,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     var contentTitle:[String] = []
     var contentArtWork:[String] = []
+    var saveDate:[Data] = []
     
-    var contentDescription:[String] = []
-    var contentRelease:[String] = []
-    var contentTime:[Int] = []
-    var contentUrl:[String] = []
     var selectedIndex =  -1 //選択された行番号
     
     
@@ -27,7 +24,6 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         read()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     //    CoreDateに保存されているデータの読み込み（READ）
@@ -51,10 +47,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             for result:AnyObject in fetchResults{
                 let title:String? = result.value(forKey:"trackName") as? String
                 let artWork:String? = result.value(forKey:"artworkUrl") as? String
-                let longDescription:String? = result.value(forKey:"longDescription") as? String
-                let releaseDate:String? = result.value(forKey:"releaseDate") as? String
-                let trackTimeMillis:Int? = result.value(forKey:"trackTimeMillis") as? Int
-                let trackViewUrl:String? = result.value(forKey:"trackViewUrl") as? String
+                let saveSaveDate:Data? = result.value(forKey: "saveDate") as? Data
                 
                 
                 let catPictureURL = URL(string: "artWork")!
@@ -80,14 +73,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
                 
                 
                 
-                //print("title:\(title!)")
-                
                 contentTitle.append(title as! String)
-                
-                contentDescription.append(longDescription as! String)
-                contentRelease.append(releaseDate as! String)
-                contentTime.append(trackTimeMillis as! Int)
-                contentUrl.append(trackViewUrl as! String)
+                saveDate.append(saveSaveDate as! Data)
                 
                 
             }
@@ -126,6 +113,39 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         performSegue(withIdentifier: "showDetail", sender: nil)
     }
     
+    //セルをスワイプした時にdeleteされる
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete
+        {
+            //AppDelegateを使う用意をしておく
+            let appD:AppDelegate = UIApplication.shared.delegate as!AppDelegate
+            
+            //エンティティを操作するためのオブジェクトを使用
+            let viewContext = appD.persistentContainer.viewContext
+            
+            
+            //どのエンティティからデータを取得してくるか設定
+            let query:NSFetchRequest<Movie> = Movie.fetchRequest()
+            
+            //データを一括取得
+            do{
+                let fetchRequests = try viewContext.fetch(query)
+                
+                for result:AnyObject in fetchRequests{
+                    //取得したデータを指定し、削除
+                    let record = result as! NSManagedObject
+                    viewContext.delete(record)
+                }
+                
+                //削除した状態を保存
+                try viewContext.save()
+            }catch{
+            }
+            
+
+            tableView.reloadData()
+        }
+    }
     
     
     
@@ -140,6 +160,9 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         //        as ダウンキャスト変換するための記号
         
         let dv:movieDetail = segue.destination as! movieDetail
+        
+        //saveDataの保存
+        //dv.scSelectedDate = saveDate[selectedIndex]
         
         //        作成しておいたプロパティー（メンバ変数）に行番号を保存
         dv.scSelectedIndex = selectedIndex
