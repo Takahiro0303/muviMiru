@@ -50,46 +50,30 @@ class movieSwipe: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        // インジケータを作成する.
-        //        myActivityIndicator = UIActivityIndicatorView()
-        //        //myActivityIndicator.frame = CGRectMake(0, 0, 50, 50)
-        //        myActivityIndicator.center = self.view.center
-        //
-        //        // アニメーションを開始する.
-        //        myActivityIndicator.startAnimating()
-        //
-        //
-        //        // インジケータをViewに追加する.
-        //        self.view.addSubview(myActivityIndicator)
+        viewOn()
         
-        
-        //baseView(カード)の色をつける
-        baseView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-        
-        //baseView.center = CGPoint(x: view.center.x, y: view.center.y - 10)
-        
-        
-        self.view.addSubview(baseView)
-        
-        
-        
-        //        スワイプを定義
-        let Pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(_:)))
-        //        baseViewにジェスチャーを登録
-        self.baseView.addGestureRecognizer(Pan)
-        
-        //画像の表示を可能にするコード
-        imageView.isUserInteractionEnabled = true
-        
-        // baseViewの上にmyPictureを載せる
-        self.baseView.addSubview(imageView)
-        
-        baseView.layer.cornerRadius = 10
-        baseView.layer.masksToBounds = false
-        baseView.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1).cgColor
-        baseView.layer.shadowOpacity = 0.5 // 透明度
-        baseView.layer.shadowOffset = CGSize(width: 5, height: 5) // 距離
-        baseView.layer.shadowRadius = 5 // ぼかし量
+//        //baseView(カード)の色をつける
+//        baseView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+//
+//        self.view.addSubview(baseView)
+//
+//        //        スワイプを定義
+//        let Pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(_:)))
+//        //        baseViewにジェスチャーを登録
+//        self.baseView.addGestureRecognizer(Pan)
+//
+//        //画像の表示を可能にするコード
+//        imageView.isUserInteractionEnabled = true
+//
+//        // baseViewの上にmyPictureを載せる
+//        self.baseView.addSubview(imageView)
+//
+//        baseView.layer.cornerRadius = 10
+//        baseView.layer.masksToBounds = false
+//        baseView.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1).cgColor
+//        baseView.layer.shadowOpacity = 0.5 // 透明度
+//        baseView.layer.shadowOffset = CGSize(width: 5, height: 5) // 距離
+//        baseView.layer.shadowRadius = 5 // ぼかし量
         
         //iTunesのAPIからデータ取得
         //URLを指定して、インターネット経由で取得
@@ -212,35 +196,7 @@ class movieSwipe: UIViewController {
         //写真を置くUIImageViewの作成
         var imageView:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290, height: 390))
         
-        //baseView(カード)の色をつける
-        baseView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-        
-        //baseView.center = CGPoint(x: view.center.x, y: view.center.y - 10)
-        
-        self.view.addSubview(baseView)
-        
-        // baseViewの上にmyPictureを載せる
-        self.baseView.addSubview(imageView)
-        
-        
-        //スワイプを定義
-        let Pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(_:)))
-        //baseViewにジェスチャーを登録
-        baseView.addGestureRecognizer(Pan)
-        
-        //画像の表示を可能にするコード
-        imageView.isUserInteractionEnabled = true
-        
-        //baseViewの上にmyPictureを載せる
-        baseView.addSubview(imageView)
-        
-        baseView.layer.cornerRadius = 10
-        baseView.layer.masksToBounds = false
-        baseView.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1).cgColor
-        baseView.layer.shadowOpacity = 0.5 // 透明度
-        baseView.layer.shadowOffset = CGSize(width: 5, height: 5) // 距離
-        baseView.layer.shadowRadius = 5 // ぼかし量
-        
+        viewOn()
 
         number += 1
         
@@ -356,6 +312,36 @@ class movieSwipe: UIViewController {
             })
             
         }
+        
+    }
+    
+    func viewOn() {
+        //baseView(カード)の色をつける
+        baseView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        
+        self.view.addSubview(baseView)
+        
+        // baseViewの上にmyPictureを載せる
+        self.baseView.addSubview(imageView)
+        
+        
+        //スワイプを定義
+        let Pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(_:)))
+        //baseViewにジェスチャーを登録
+        baseView.addGestureRecognizer(Pan)
+        
+        //画像の表示を可能にするコード
+        imageView.isUserInteractionEnabled = true
+        
+        //baseViewの上にmyPictureを載せる
+        baseView.addSubview(imageView)
+        
+        baseView.layer.cornerRadius = 10
+        baseView.layer.masksToBounds = false
+        baseView.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1).cgColor
+        baseView.layer.shadowOpacity = 0.5 // 透明度
+        baseView.layer.shadowOffset = CGSize(width: 5, height: 5) // 距離
+        baseView.layer.shadowRadius = 5 // ぼかし量
         
     }
     

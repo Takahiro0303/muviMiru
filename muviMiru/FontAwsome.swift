@@ -8,8 +8,8 @@ class FontAwsome: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.items![0].image = UIImage.fontAwesomeIcon(name: .film, textColor: UIColor.red, size: CGSize (width: 30, height: 30))
-        self.tabBar.items![1].image = UIImage.fontAwesomeIcon(name: .user, textColor: UIColor.red, size: CGSize (width: 30, height: 30))
+        self.tabBar.items![0].image = UIImage.fontAwesomeIcon(name: .film, textColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), size: CGSize (width: 30, height: 30))
+        self.tabBar.items![1].image = UIImage.fontAwesomeIcon(name: .user, textColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), size: CGSize (width: 30, height: 30))
         
     }
     

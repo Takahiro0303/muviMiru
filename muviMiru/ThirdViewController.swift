@@ -65,7 +65,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
                     } else {
                        if let res = response as? HTTPURLResponse {
                         print("レスポンスコード付き画像ダウンロード \(res.statusCode)")
-                        contentArtWork.append(data as! String)
+                        self.contentArtWork.append(data as! String)
 //                        if let imageData = data {
 //
 //                                let imageimage = UIImage(data: imageData)
@@ -108,7 +108,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         //表示したい文字の設定 indexPath.rowが行番号を表す
-        cell.movieLavel?.text = contentTitle[indexPath.row]
+        //cell.movieLavel?.text = contentTitle[indexPath.row]
         //cell.movieImage?.image = 
         cell.textLabel?.textColor = UIColor.brown
         cell.accessoryType = .disclosureIndicator
