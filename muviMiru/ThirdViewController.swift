@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  sampleTeaList
-//
-//  Created by takahiro tshuchida on 2017/09/07.
-//  Copyright © 2017年 Takahiro Tshuchida. All rights reserved.
-//
-
 import UIKit
 import CoreData
 
@@ -14,8 +6,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     @IBOutlet weak var myTextView: UITableView!
     
     var contentTitle:[String] = []
-    var contentArtWork:[String] = []
-    var saveDate:[Data] = []
+    var contentArtWork:[NSData] = []
+    var saveDate:[Date] = []
     
     var selectedIndex =  -1 //選択された行番号
     
@@ -58,14 +50,10 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
                     } else {
                        if let res = response as? HTTPURLResponse {
                         print("レスポンスコード付き画像ダウンロード \(res.statusCode)")
-                        self.contentArtWork.append(data as! String)
-//                        if let imageData = data {
-//
-//                                let imageimage = UIImage(data: imageData)
-//                                print(imageimage!)
-//                                self.templateThumbnailImageView.image = imageimage
-//                            }
+                        if let imageData = data {
+                            self.contentArtWork.append(data as! NSData)
                         }
+                    }
                     }
                 }
                 
@@ -74,7 +62,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
                 
                 
                 contentTitle.append(title as! String)
-                saveDate.append(saveSaveDate as! Data)
+                saveDate.append(saveSaveDate as! Date)
                 
                 
             }
@@ -92,12 +80,13 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //文字を表示するセルの取得（セルの再利用）
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ThirdTableViewCell
         
         //表示したい文字の設定 indexPath.rowが行番号を表す
-        //cell.movieLavel?.text = contentTitle[indexPath.row]
-        //cell.movieImage?.image = 
-        cell.textLabel?.textColor = UIColor.brown
+        cell.movieLavel?.text = contentTitle[indexPath.row]
+        let imageimage = UIImage(data: contentArtWork[indexPath.row] as Data)
+        cell.movieImage?.image = imageimage
+        cell.textLabel?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         cell.accessoryType = .disclosureIndicator
         //文字を設定したセルを返す
         return cell
@@ -153,17 +142,10 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     //        セグエを使って画面を移動しようとしている時発動するメソッド
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        prepareの中では、移動元の画面、移動先の画面、どちらも操作が可能
-        //        移動先の画面に渡したい情報をセットできる
-        //        dv　今から移動する画面のオブジェクト（インスタンス）
-        //        segue.destination セグエを使って移動する先
-        //        as ダウンキャスト変換するための記号
         
         let dv:movieDetail = segue.destination as! movieDetail
-        
         //saveDataの保存
-        //dv.scSelectedDate = saveDate[selectedIndex]
-        
+        dv.scSelectedDate = saveDate[selectedIndex]
         //        作成しておいたプロパティー（メンバ変数）に行番号を保存
         dv.scSelectedIndex = selectedIndex
         

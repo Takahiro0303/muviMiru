@@ -2,7 +2,7 @@
 //  Movie+CoreDataProperties.swift
 //  
 //
-//  Created by takahiro tshuchida on 2017/09/30.
+//  Created by takahiro tshuchida on 2017/10/11.
 //
 //
 
@@ -17,10 +17,10 @@ extension Movie {
     }
 
     @NSManaged public var artworkUrl: String?
-    @NSManaged public var trackName: String?
     @NSManaged public var longDescription: String?
-    @NSManaged public var trackTimeMillis: Int16
     @NSManaged public var releaseDate: String?
+    @NSManaged public var saveDate: NSDate?
+    @NSManaged public var trackName: String?
     @NSManaged public var trackViewUrl: String?
 
 }
