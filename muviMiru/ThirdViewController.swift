@@ -26,7 +26,6 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         //エンティティを操作するためのオブジェクトを使用
         let viewContext = appD.persistentContainer.viewContext
         
-        
         //どのエンティティからデータを取得してくるか設定
         let query:NSFetchRequest<Movie> = Movie.fetchRequest()
         
@@ -111,7 +110,6 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             
             //エンティティを操作するためのオブジェクトを使用
             let viewContext = appD.persistentContainer.viewContext
-            
             
             //どのエンティティからデータを取得してくるか設定
             let query:NSFetchRequest<Movie> = Movie.fetchRequest()

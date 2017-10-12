@@ -59,8 +59,8 @@ class movieDetail: UIViewController {
             for result: AnyObject in fetchResults{
                 let title:String? = result.value(forKey: "trackName") as? String
                 let description:String? = result.value(forKey:"longDescription") as? String
-                let releaseDate:Data? = result.value(forKey: "releaseDate") as? String
-                let trackUrl:Data? = result.value(forKey: "trackViewUrl") as? String
+                let releaseDate:String? = result.value(forKey: "releaseDate") as? String
+                let trackUrl:String? = result.value(forKey: "trackViewUrl") as? String
                 let artWork:String? = result.value(forKey:"artworkUrl") as? String
                 
                 
@@ -68,7 +68,7 @@ class movieDetail: UIViewController {
                 textUrl.text = trackUrl!
                 myTextView.text = description!
                 textRelease.text = releaseDate!
-                myImageView.image = artWork
+                //myImageView.image = artWork
                 
                 
                 

@@ -3,6 +3,12 @@ import CoreData
 
 class movieSwipe: UIViewController {
     
+
+    @IBOutlet weak var thumbImage: UIImageView!
+    
+    //インジケーターのインスタンス化
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    
     var divisor : CGFloat!
     
     var scSelectedIndex = -1
@@ -28,14 +34,12 @@ class movieSwipe: UIViewController {
     //パッケージが何番目かを保存する数
     var num = 0
     
-    
     //コアデータに入れたいデータの保存
     var artWork = ""
     var trackName = ""
     var longDescription = ""
     var releaseDate = ""
     var trackViewUrl = ""
-    
     
     //背景のView
     var baseView:UIView = UIView(frame: CGRect(x: 10, y: 80, width: 300, height: 420))
@@ -47,6 +51,8 @@ class movieSwipe: UIViewController {
         super.viewDidLoad()
         
         viewOn()
+        
+        showIndicator()
         
         //iTunesのAPIからデータ取得
         //URLを指定して、インターネット経由で取得
@@ -117,14 +123,6 @@ class movieSwipe: UIViewController {
                         print("レスポンスコード付きダウンロード \(res.statusCode)")
                         if let imageData = data {
                             self.movieD.append(data as! NSData)
-                            
-                            if self.movieD.count == 1 {
-                                
-                                let imageimage = UIImage(data: imageData)
-                                print(imageimage!)
-                                self.imageView.image = imageimage
-                                
-                            }
                         } else {
                             print("画像を取得できませんでした：画像はありません")
                         }
@@ -137,6 +135,36 @@ class movieSwipe: UIViewController {
             downloadPicTask.resume()
             
         }
+        
+        
+        //１枚目の画像の表示
+        let catPictureURL = URL(string: movieList[0])!
+        
+        let session = URLSession(configuration: .default)
+        
+        let downloadPicTask = session.dataTask(with: catPictureURL) { (data, response, error) in
+            if let e = error {
+                print("cat pictureのダウンロード中にエラーが発生しました: \(e)")
+            } else {
+                if let res = response as? HTTPURLResponse {
+                    if let imageData = data {
+                        let imageimage = UIImage(data: imageData)
+                        print("image出たよ!")
+                        self.imageView.image = imageimage
+                        self.activityIndicator.stopAnimating()
+                        UIApplication.shared.endIgnoringInteractionEvents()
+                        
+                    } else {
+                        print("画像を取得できませんでした：画像はありません")
+                    }
+                } else {
+                    print("何らかの理由で応答コードを取得できませんでした")
+                }
+            }
+        }
+        
+        downloadPicTask.resume()
+        
         
         
         artWork = movieList[0]
@@ -169,10 +197,7 @@ class movieSwipe: UIViewController {
             
             let movieL = movieLongDescription[number]
             longDescription = movieL
-            
-            //        if movietrackTimeMillis[number] != nil{
-            //        let movieTime = movietrackTimeMillis[number]
-            //        }
+        
             let movieR = movieReleaseDate[number]
             releaseDate = movieR
             
@@ -186,19 +211,18 @@ class movieSwipe: UIViewController {
         let card = sender.view!
         let point = sender.translation(in: view)
         let xFromCenter = card.center.x - view.center.x
-        //card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
         card.center = CGPoint(x: card.center.x + (point.x)/4, y: card.center.y + (point.y/4))
-        //print("move")
-//        if xFromCenter > 0 {
-//            thumbImage.image = #imageLiteral(resourceName: "iThumbsUp")
-//            thumbImage.tintColor = UIColor.green
-//        }else{
-//            thumbImage.image = #imageLiteral(resourceName: "ThumbsDown")
-//            thumbImage.tintColor = UIColor.red
-//        }
-//
-//        thumbImage.alpha = abs(xFromCenter) / view.center.x
         
+        if xFromCenter > 0 {
+            thumbImage.image = #imageLiteral(resourceName: "iThumbsUp")
+            thumbImage.tintColor = UIColor.green
+        }else{
+            thumbImage.image = #imageLiteral(resourceName: "ThumbsDown")
+            thumbImage.tintColor = UIColor.red
+        }
+
+        thumbImage.alpha = abs(xFromCenter) / view.center.x
+
         
         //指が離れた時に呼ばれる
         if sender.state == UIGestureRecognizerState.ended{
@@ -270,15 +294,14 @@ class movieSwipe: UIViewController {
         
         //写真を置くUIImageViewの作成
         var imageView:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290 , height: 390))
-
-        
         
         //baseView(カード)の色をつける
         baseView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         
+        //viewの上にbaseViewを乗せる
         self.view.addSubview(baseView)
         
-        // baseViewの上にmyPictureを載せる
+        // baseViewの上にmyPictureを乗せる
         self.baseView.addSubview(imageView)
         
         //スワイプを定義
@@ -291,16 +314,15 @@ class movieSwipe: UIViewController {
         
         if movieD.count > 0 {
             let movieA = movieD[number] as! NSData
-        if movieA != nil {
-            //パッケージの出力
-            let imageimage = UIImage(data: movieA as Data)
-            print(imageimage!)
-            imageView.image = imageimage
-        }
+            if movieA != nil {
+                //パッケージの出力
+                let imageimage = UIImage(data: movieA as Data)
+                print(imageimage!)
+                imageView.image = imageimage
+            }
         }
         
-        //baseViewの上にmyPictureを載せる
-        baseView.addSubview(imageView)
+        
         
         baseView.layer.cornerRadius = 10
         baseView.layer.masksToBounds = false
@@ -309,6 +331,18 @@ class movieSwipe: UIViewController {
         baseView.layer.shadowOffset = CGSize(width: 5, height: 5) // 距離
         baseView.layer.shadowRadius = 5 // ぼかし量
         
+    }
+    
+    //インジケータースタート
+    func showIndicator(){
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    
     }
     
     override func didReceiveMemoryWarning() {

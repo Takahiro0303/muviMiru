@@ -86,9 +86,18 @@
                     <view key="view" contentMode="scaleToFill" id="Q2O-os-FfN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="iThumbsUp" translatesAutoresizingMaskIntoConstraints="NO" id="BgX-BR-reB">
+                                <rect key="frame" x="217" y="88" width="87" height="99"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <connections>
+                        <outlet property="thumbImage" destination="BgX-BR-reB" id="wub-kW-kgU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOF-gK-Mhs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="6nA-w8-Kma"/>
@@ -167,15 +176,23 @@
                         <constraints>
                             <constraint firstItem="a6R-A1-QRP" firstAttribute="leading" secondItem="1kj-yj-pqk" secondAttribute="leading" id="3Fc-sO-6gW"/>
                             <constraint firstItem="a6R-A1-QRP" firstAttribute="top" secondItem="1kj-yj-pqk" secondAttribute="top" constant="20" id="613-BT-tQm"/>
+                            <constraint firstItem="a6R-A1-QRP" firstAttribute="top" secondItem="1kj-yj-pqk" secondAttribute="top" id="C0N-5K-H4E"/>
                             <constraint firstItem="a6R-A1-QRP" firstAttribute="leading" secondItem="1kj-yj-pqk" secondAttribute="leading" id="F0W-iA-JIB"/>
+                            <constraint firstItem="YXD-Qn-uCe" firstAttribute="top" secondItem="1kj-yj-pqk" secondAttribute="top" id="GNd-C1-ozA"/>
                             <constraint firstItem="YXD-Qn-uCe" firstAttribute="top" secondItem="1kj-yj-pqk" secondAttribute="top" id="Gcu-f0-ibN"/>
+                            <constraint firstAttribute="trailing" secondItem="YXD-Qn-uCe" secondAttribute="trailing" id="JwU-VK-Gfp"/>
                             <constraint firstAttribute="bottom" secondItem="a6R-A1-QRP" secondAttribute="bottom" id="OaR-mi-hTr"/>
+                            <constraint firstAttribute="bottom" secondItem="YXD-Qn-uCe" secondAttribute="bottom" constant="1" id="QPY-6X-exS"/>
                             <constraint firstItem="YXD-Qn-uCe" firstAttribute="leading" secondItem="1kj-yj-pqk" secondAttribute="leading" id="Qdl-9c-GLs"/>
+                            <constraint firstItem="unr-L1-fbC" firstAttribute="top" secondItem="a6R-A1-QRP" secondAttribute="bottom" id="RXA-ab-Z8T"/>
                             <constraint firstAttribute="trailing" secondItem="YXD-Qn-uCe" secondAttribute="trailing" id="St2-aI-NsH"/>
+                            <constraint firstAttribute="trailing" secondItem="a6R-A1-QRP" secondAttribute="trailing" id="bB5-jH-ST7"/>
+                            <constraint firstItem="a6R-A1-QRP" firstAttribute="leading" secondItem="1kj-yj-pqk" secondAttribute="leading" id="cnS-ow-E1h"/>
                             <constraint firstAttribute="trailing" secondItem="a6R-A1-QRP" secondAttribute="trailing" id="mHo-y4-Ixk"/>
                             <constraint firstAttribute="trailing" secondItem="a6R-A1-QRP" secondAttribute="trailing" id="nks-aI-N1a"/>
                             <constraint firstItem="a6R-A1-QRP" firstAttribute="top" secondItem="1kj-yj-pqk" secondAttribute="top" id="waV-y4-25O"/>
                             <constraint firstAttribute="bottom" secondItem="YXD-Qn-uCe" secondAttribute="bottom" constant="1" id="z3d-jj-7w1"/>
+                            <constraint firstItem="YXD-Qn-uCe" firstAttribute="leading" secondItem="1kj-yj-pqk" secondAttribute="leading" id="zcj-IP-aGm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HvO-iG-gup"/>
@@ -205,7 +222,7 @@
                                 <color key="backgroundColor" red="0.1764705926" green="0.49803921579999999" blue="0.75686275960000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mho-op-KGm">
-                                <rect key="frame" x="0.0" y="64" width="320" height="169"/>
+                                <rect key="frame" x="0.0" y="128" width="320" height="169"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="169" id="xDL-c4-dee"/>
                                 </constraints>
@@ -386,6 +403,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="iThumbsUp" width="48" height="48"/>
         <image name="icons8-User-48" width="48" height="48"/>
         <image name="movieProject-1" width="50" height="50"/>
     </resources>
