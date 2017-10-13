@@ -86,6 +86,9 @@ class movieSwipe: UIViewController {
                     //配列に入れ込む
                     movieList.append(replaced as! String)
                     
+                    //空データをmovieDに追加
+                    movieD.append(NSData())
+                    
                     //trackNameの取得
                     let trackName = movieData["trackName"] as! String
                     movieTrackName.append(trackName as! String)
@@ -112,15 +115,29 @@ class movieSwipe: UIViewController {
             let session = URLSession(configuration: .default)
             
             let downloadPicTask = session.dataTask(with: catPictureURL) { (data, response, error) in
-            
+                
                 if let e = error {
                     print("cat pictureのダウンロード中にエラーが発生しました: \(e)")
                 } else {
-                  
+                    
                     if let res = response as? HTTPURLResponse {
                         print("レスポンスコード付きダウンロード \(res.statusCode)")
                         if let imageData = data {
-                            self.movieD.append(data as! NSData)
+                            //self.movieD.append(data as! NSData)
+                            
+                            //movieListを検索し、今ダウンロードされたデータがどれか判定、その場所へ保存（順番を一致させる）
+                            var index = 0
+                            for movietmp in self.movieList{
+                                if movietmp == res.url?.absoluteString {
+                                    self.movieD[index] = data as! NSData
+                                    break
+                                }else{
+                                    index += 1
+                                }
+                                
+                            }
+                            
+                            
                         } else {
                             print("画像を取得できませんでした：画像はありません")
                         }
@@ -172,6 +189,7 @@ class movieSwipe: UIViewController {
         
         let movieT = movieTrackName[0]
         trackName = movieT
+        print("一番初めの"+trackName)
         
         let movieL = movieLongDescription[0]
         longDescription = movieL
@@ -187,14 +205,16 @@ class movieSwipe: UIViewController {
     //    新しいカードを作成するメソッド
     func newPage(){
         
+        number += 1
+        
         viewOn(image:nil)
 
-        number += 1
+        
             artWork = movieList[number]
             
             let movieT = movieTrackName[number]
             trackName = movieT
-            print(movieT)
+            print("表示されているDVD名"+trackName)
             
             let movieL = movieLongDescription[number]
             longDescription = movieL
@@ -235,6 +255,8 @@ class movieSwipe: UIViewController {
                 card.alpha = 0
             })
             self.newPage()
+            
+                
             return
             }else if card.center.x > (view.frame.width - 75){
             //右に消える
@@ -242,7 +264,7 @@ class movieSwipe: UIViewController {
                 card.center.self = CGPoint(x: self.view.center.x + 200, y: card.center.y + 75)
                 card.alpha = 0
             })
-            self.newPage()
+            
             
             //AppDelegateを使う用意をいておく
             let appD:AppDelegate = UIApplication.shared.delegate as!AppDelegate
@@ -255,19 +277,22 @@ class movieSwipe: UIViewController {
             
             //movieエンティティにレコード（行）を購入するためのオブジェクトを作成
             let newRecord = NSManagedObject(entity: movieData!, insertInto: viewContext)
+                
             
-            print("アートワーク"+artWork)
-            print("名前"+trackName)
-            print("説明"+longDescription)
-            print("日付"+releaseDate)
-            print("URL"+trackViewUrl)
             //値のセット(アトリビュート毎に指定)forkeyはモデルで指定したアトリビュート名
             newRecord.setValue(artWork, forKey: "artworkUrl")
             newRecord.setValue(releaseDate, forKey: "releaseDate")
             newRecord.setValue(trackName, forKey: "trackName")
             newRecord.setValue(longDescription, forKey: "longDescription")
             newRecord.setValue(trackViewUrl, forKey: "trackViewUrl")
-            newRecord.setValue(Data(), forKey: "saveDate")
+            newRecord.setValue(Date(), forKey: "saveDate")
+                print("アートワーク"+artWork)
+                print("名前"+trackName)
+                print("説明"+longDescription)
+                print("日付"+releaseDate)
+                print("URL"+trackViewUrl)
+                
+                
             
             //レコード（行）の即時保存
             //        例外表示の書き方
@@ -276,6 +301,7 @@ class movieSwipe: UIViewController {
             }catch{
                 
             }
+                self.newPage()
             return
             }
         
@@ -317,11 +343,12 @@ class movieSwipe: UIViewController {
         
         if movieD.count > 0 {
             let movieA = movieD[number] as! NSData
-            if movieA != nil {
+            if movieA != NSData() {
                 //パッケージの出力
                 let imageimage = UIImage(data: movieA as Data)
-                print(imageimage!)
                 imageView.image = imageimage
+            }else{
+                
             }
         }
         

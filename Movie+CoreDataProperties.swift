@@ -2,7 +2,7 @@
 //  Movie+CoreDataProperties.swift
 //  
 //
-//  Created by takahiro tshuchida on 2017/10/12.
+//  Created by takahiro tshuchida on 2017/10/13.
 //
 //
 

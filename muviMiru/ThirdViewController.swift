@@ -36,28 +36,28 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             
             //一件ずつ表示
             for result:AnyObject in fetchResults{
-                let title:String? = result.value(forKey:"trackName") as? String
-                let artWork:String? = result.value(forKey:"artworkUrl") as? String
-                let saveSaveDate:Data? = result.value(forKey: "saveDate") as? Data
+                var title:String? = result.value(forKey:"trackName") as? String
+                var artWork:String? = result.value(forKey:"artworkUrl") as? String
+                var saveSaveDate:Date? = result.value(forKey: "saveDate") as? Date
                 
                 
-                let catPictureURL = URL(string: "artWork")!
+                let catPictureURL = URL(string: artWork!)
                 let session = URLSession(configuration: .default)
-                let downloadPicTask = session.dataTask(with: catPictureURL) { (data, response, error) in
+                let downloadPicTask = session.dataTask(with: catPictureURL!) { (data, response, error) in
                     if let e = error {
                         print("cat pictureのダウンロード中にエラーが発生しました: \(e)")
                     } else {
                        if let res = response as? HTTPURLResponse {
                         print("レスポンスコード付き画像ダウンロード \(res.statusCode)")
-                        if let imageData = data {
+                            if let imageData = data {
                             self.contentArtWork.append(data as! NSData)
+                            }
                         }
-                    }
-                    }
-                }
-                
+                        }
+                                                                            }
+
                 downloadPicTask.resume()
-                
+
                 
                 
                 contentTitle.append(title as! String)
@@ -85,6 +85,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         cell.movieLavel?.text = contentTitle[indexPath.row]
         let imageimage = UIImage(data: contentArtWork[indexPath.row] as Data)
         cell.movieImage?.image = imageimage
+        
+        
         cell.textLabel?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         cell.accessoryType = .disclosureIndicator
         //文字を設定したセルを返す
@@ -102,9 +104,10 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     }
     
     //セルをスワイプした時にdeleteされる
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete
-        {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let action = UITableViewRowAction(style: .default,title: "削除"){action, index in
+        
             //AppDelegateを使う用意をしておく
             let appD:AppDelegate = UIApplication.shared.delegate as!AppDelegate
             
@@ -132,10 +135,11 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
 
             tableView.reloadData()
         }
+        
+        return[action]
     }
     
-    
-    
+
     
     //        セグエを使って画面を移動しようとしている時発動するメソッド
     
