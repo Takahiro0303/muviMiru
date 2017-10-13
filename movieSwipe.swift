@@ -49,9 +49,7 @@ class movieSwipe: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewOn()
-        
+
         showIndicator()
         
         //iTunesのAPIからデータ取得
@@ -138,19 +136,22 @@ class movieSwipe: UIViewController {
         
         
         //１枚目の画像の表示
-        let catPictureURL = URL(string: movieList[0])!
+        let pictureURL = URL(string: movieList[0])!
         
-        let session = URLSession(configuration: .default)
+        let sessionSession = URLSession(configuration: .default)
         
-        let downloadPicTask = session.dataTask(with: catPictureURL) { (data, response, error) in
-            if let e = error {
-                print("cat pictureのダウンロード中にエラーが発生しました: \(e)")
+        let downloadTask = sessionSession.dataTask(with: pictureURL) { (dataData, response1, error1) in
+            if let erer = error1 {
+                print("エラー発生 \(erer)")
             } else {
-                if let res = response as? HTTPURLResponse {
-                    if let imageData = data {
-                        let imageimage = UIImage(data: imageData)
+                if let res1 = response1 as? HTTPURLResponse {
+                    if let imageData1 = dataData {
+                        let imageimageimage = UIImage(data: imageData1)
+                        
+                        self.viewOn(image: imageimageimage)
+                        
                         print("image出たよ!")
-                        self.imageView.image = imageimage
+                        self.imageView.image = imageimageimage
                         self.activityIndicator.stopAnimating()
                         UIApplication.shared.endIgnoringInteractionEvents()
                         
@@ -163,7 +164,7 @@ class movieSwipe: UIViewController {
             }
         }
         
-        downloadPicTask.resume()
+        downloadTask.resume()
         
         
         
@@ -186,7 +187,7 @@ class movieSwipe: UIViewController {
     //    新しいカードを作成するメソッド
     func newPage(){
         
-        viewOn()
+        viewOn(image:nil)
 
         number += 1
             artWork = movieList[number]
@@ -288,7 +289,7 @@ class movieSwipe: UIViewController {
         
     }
     
-    func viewOn() {
+    func viewOn(image:UIImage?) {
         //背景のView
         var baseView:UIView = UIView(frame: CGRect(x: 10, y: 80, width: 300, height: 420))
         
@@ -298,19 +299,21 @@ class movieSwipe: UIViewController {
         //baseView(カード)の色をつける
         baseView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         
-        //viewの上にbaseViewを乗せる
-        self.view.addSubview(baseView)
+        //画像の表示を可能にするコード
+        imageView.isUserInteractionEnabled = true
+        
+        if image != nil {
+            imageView.image = image
+        }
         
         // baseViewの上にmyPictureを乗せる
-        self.baseView.addSubview(imageView)
+        baseView.addSubview(imageView)
         
         //スワイプを定義
         let Pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(_:)))
         //baseViewにジェスチャーを登録
         baseView.addGestureRecognizer(Pan)
         
-        //画像の表示を可能にするコード
-        imageView.isUserInteractionEnabled = true
         
         if movieD.count > 0 {
             let movieA = movieD[number] as! NSData
@@ -330,6 +333,10 @@ class movieSwipe: UIViewController {
         baseView.layer.shadowOpacity = 0.5 // 透明度
         baseView.layer.shadowOffset = CGSize(width: 5, height: 5) // 距離
         baseView.layer.shadowRadius = 5 // ぼかし量
+        
+        //viewの上にbaseViewを乗せる
+        self.view.addSubview(baseView)
+        
         
     }
     
