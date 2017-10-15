@@ -322,6 +322,9 @@ class movieSwipe: UIViewController {
         //写真を置くUIImageViewの作成
         var imageView:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290 , height: 390))
         
+        //noimageの写真を置く
+        var imageView1:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290 , height: 390))
+        
         //baseView(カード)の色をつける
         baseView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         

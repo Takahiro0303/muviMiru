@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+//import SDWebImage
 
 class movieDetail: UIViewController {
     
@@ -30,7 +31,7 @@ class movieDetail: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        read()
         print("\(scSelectedIndex)行目が押されて移動してきました")
         
     }
@@ -63,12 +64,34 @@ class movieDetail: UIViewController {
                 let trackUrl:String? = result.value(forKey: "trackViewUrl") as? String
                 let artWork:String? = result.value(forKey:"artworkUrl") as? String
                 
+//                let imageURL = URL(string: artWork)
+//
+//                myImageView.sd_setImage(with: imageURL)
+                
+                let catPictureURL = URL(string: artWork!)
+                let session = URLSession(configuration: .default)
+                let downloadPicTask = session.dataTask(with: catPictureURL!) { (data, response, error) in
+                    if let e = error {
+                        print("pictureのダウンロード中にエラーが発生しました: \(e)")
+                    } else {
+                       if let res = response as? HTTPURLResponse {
+                        print("レスポンスコード付き画像ダウンロード \(res.statusCode)")
+                            if let imageData = data {
+                                let imageimage = UIImage(data: imageData)
+                                print(imageimage!)
+                                self.myImageView.image = imageimage
+                            }
+                        }
+                        }                                                                                            }
+                
+                    downloadPicTask.resume()
+                
+                
                 
                 textName.text = title!
-                textUrl.text = trackUrl!
+                //textUrl.text = trackUrl!
                 myTextView.text = description!
                 textRelease.text = releaseDate!
-                //myImageView.image = artWork
                 
                 
                 

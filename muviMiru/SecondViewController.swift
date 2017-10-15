@@ -35,7 +35,7 @@ class SecondViewController: UIViewController,UITableViewDataSource,UITableViewDe
             
             //表示したい文字の設定 indexPath.rowが行番号を表す
             cell.textLabel?.text = proArray[indexPath.row]
-            cell.textLabel?.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            cell.textLabel?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             cell.accessoryType = .disclosureIndicator
             
             

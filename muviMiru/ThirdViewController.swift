@@ -6,7 +6,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     @IBOutlet weak var myTextView: UITableView!
     
     var contentTitle:[String] = []
-    var contentArtWork:[NSData] = []
+    //var contentArtWork:[NSData] = []
     var saveDate:[Date] = []
     
     var selectedIndex =  -1 //選択された行番号
@@ -15,6 +15,10 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         read()
     }
     
@@ -37,26 +41,25 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             //一件ずつ表示
             for result:AnyObject in fetchResults{
                 var title:String? = result.value(forKey:"trackName") as? String
-                var artWork:String? = result.value(forKey:"artworkUrl") as? String
+                //var artWork:String? = result.value(forKey:"artworkUrl") as? String
                 var saveSaveDate:Date? = result.value(forKey: "saveDate") as? Date
-                
-                
-                let catPictureURL = URL(string: artWork!)
-                let session = URLSession(configuration: .default)
-                let downloadPicTask = session.dataTask(with: catPictureURL!) { (data, response, error) in
-                    if let e = error {
-                        print("cat pictureのダウンロード中にエラーが発生しました: \(e)")
-                    } else {
-                       if let res = response as? HTTPURLResponse {
-                        print("レスポンスコード付き画像ダウンロード \(res.statusCode)")
-                            if let imageData = data {
-                            self.contentArtWork.append(data as! NSData)
-                            }
-                        }
-                        }
-                                                                            }
-
-                downloadPicTask.resume()
+                print("セーブデータ\(saveSaveDate)")
+//                let catPictureURL = URL(string: artWork!)
+//                let session = URLSession(configuration: .default)
+//                let downloadPicTask = session.dataTask(with: catPictureURL!) { (data, response, error) in
+//                    if let e = error {
+//                        print("cat pictureのダウンロード中にエラーが発生しました: \(e)")
+//                    } else {
+//                       if let res = response as? HTTPURLResponse {
+//                        print("レスポンスコード付き画像ダウンロード \(res.statusCode)")
+//                            if let imageData = data {
+//                            self.contentArtWork.append(data as! NSData)
+//                            }
+//                        }
+//                        }
+//                                                                            }
+//
+//                downloadPicTask.resume()
 
                 
                 
@@ -79,14 +82,14 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //文字を表示するセルの取得（セルの再利用）
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ThirdTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         //表示したい文字の設定 indexPath.rowが行番号を表す
-        cell.movieLavel?.text = contentTitle[indexPath.row]
-        let imageimage = UIImage(data: contentArtWork[indexPath.row] as Data)
-        cell.movieImage?.image = imageimage
-        
-        
+        //cell.movieLavel?.text = contentTitle[indexPath.row]
+//        let imageimage = UIImage(data: contentArtWork[indexPath.row] as Data)
+//        cell.movieImage?.image = imageimage
+//
+        cell.textLabel?.text = contentTitle[indexPath.row]
         cell.textLabel?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         cell.accessoryType = .disclosureIndicator
         //文字を設定したセルを返す
@@ -117,6 +120,10 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             //どのエンティティからデータを取得してくるか設定
             let query:NSFetchRequest<Movie> = Movie.fetchRequest()
             
+            //絞り込み検索、指定した日付とsaveDataが一致するデータを取得
+            let namePredicte = NSPredicate(format: "saveDate = %@", self.selectedIndex as CVarArg)
+            query.predicate = namePredicte
+            
             //データを一括取得
             do{
                 let fetchRequests = try viewContext.fetch(query)
@@ -124,6 +131,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
                 for result:AnyObject in fetchRequests{
                     //取得したデータを指定し、削除
                     let record = result as! NSManagedObject
+                    //print("削除されました")
                     viewContext.delete(record)
                 }
                 
