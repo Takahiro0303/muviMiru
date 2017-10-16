@@ -228,7 +228,7 @@ class movieSwipe: UIViewController {
  
     
 //　　　　gesturePanメソッド
-    func panAction(_ sender: UIPanGestureRecognizer) {
+    @objc func panAction(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
         let point = sender.translation(in: view)
         let xFromCenter = card.center.x - view.center.x

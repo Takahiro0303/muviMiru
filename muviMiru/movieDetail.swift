@@ -34,6 +34,11 @@ class movieDetail: UIViewController {
         read()
         print("\(scSelectedIndex)行目が押されて移動してきました")
         
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(movieDetail.urlTap(_:)))
+        textUrl.addGestureRecognizer(tapGestureRecognizer)
+        textUrl.isUserInteractionEnabled = true
+        
     }
     
     //    CoreDateに保存されているデータの読み込み（READ）
@@ -89,17 +94,27 @@ class movieDetail: UIViewController {
                 
                 
                 textName.text = title!
-                //textUrl.text = trackUrl!
+                textUrl.text = trackUrl!
                 myTextView.text = description!
                 textRelease.text = releaseDate!
                 
                 
                 
+                }
+                }catch{
             }
-        }catch{
-        }
             
         }
+    
+    
+    //urlがタップされたら
+    @IBAction func urlTap(_ sender: Any) {
+        if let url = NSURL(string: textUrl as! String){
+            UIApplication.shared.openURL(url as URL)
+        }
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

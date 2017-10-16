@@ -16,14 +16,20 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         read()
+        //myTextView.reloadData()
     }
     
     //    CoreDateに保存されているデータの読み込み（READ）
     func read(){
+        
+        contentTitle = []
+        saveDate = []
+        
         //AppDelegateを使う用意をしておく
         let appD:AppDelegate = UIApplication.shared.delegate as!AppDelegate
         
@@ -121,7 +127,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             let query:NSFetchRequest<Movie> = Movie.fetchRequest()
             
             //絞り込み検索、指定した日付とsaveDataが一致するデータを取得
-            let namePredicte = NSPredicate(format: "saveDate = %@", self.selectedIndex as CVarArg)
+            let namePredicte = NSPredicate(format: "saveDate = %@", self.saveDate[indexPath.row] as CVarArg)
             query.predicate = namePredicte
             
             //データを一括取得
@@ -138,10 +144,11 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
                 //削除した状態を保存
                 try viewContext.save()
             }catch{
+                print("削除失敗")
             }
             
-
-            tableView.reloadData()
+            self.read()
+            self.myTextView.reloadData()
         }
         
         return[action]

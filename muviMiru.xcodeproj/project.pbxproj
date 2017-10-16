@@ -22,7 +22,6 @@
 		1C83F9491F90FB7D00EFB145 /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F9481F90FB7C00EFB145 /* Movie+CoreDataClass.swift */; };
 		1C83F94B1F90FB9D00EFB145 /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83F94A1F90FB9C00EFB145 /* Movie+CoreDataProperties.swift */; };
 		1CA84D771F7394B40050C03D /* movieSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA84D761F7394B40050C03D /* movieSwipe.swift */; };
-		1CD69EAC1F93779F0063AB58 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD69EAD1F93779F0063AB58 /* SDWebImage.framework */; };
 		5FB70ABD4CE6972E03538E03 /* Pods_muviMiruTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09E859A8EF77E31A371821B /* Pods_muviMiruTests.framework */; };
 		BA2C2ABA753D6A65CF071BFB /* Pods_muviMiru.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6A648BA1D8EF9958465BCE8 /* Pods_muviMiru.framework */; };
 		F0C7B778C23B2C127A8820CD /* Pods_muviMiruUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A0891BE0D30B4C50356AAB /* Pods_muviMiruUITests.framework */; };
@@ -84,7 +83,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CD69EAC1F93779F0063AB58 /* SDWebImage.framework in Frameworks */,
 				1C67D3261F794A3900D9CACA /* FontAwesome_swift.framework in Frameworks */,
 				BA2C2ABA753D6A65CF071BFB /* Pods_muviMiru.framework in Frameworks */,
 			);
@@ -272,15 +270,18 @@
 					1C2155A81F6E5EA800EA2E8E = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 4Z6DX6347R;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					1C2155BE1F6E5EA900EA2E8E = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 1C2155A81F6E5EA800EA2E8E;
 					};
 					1C2155C91F6E5EA900EA2E8E = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 1C2155A81F6E5EA800EA2E8E;
 					};
@@ -576,6 +577,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -627,6 +629,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -657,7 +660,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.takahirotsuchida.muviMiru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -672,7 +675,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.takahirotsuchida.muviMiru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -686,7 +689,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.takahirotsuchida.muviMiruTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/muviMiru.app/muviMiru";
 			};
 			name = Debug;
@@ -701,7 +704,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.takahirotsuchida.muviMiruTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/muviMiru.app/muviMiru";
 			};
 			name = Release;
@@ -715,7 +718,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.takahirotsuchida.muviMiruUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = muviMiru;
 			};
 			name = Debug;
@@ -729,7 +732,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.takahirotsuchida.muviMiruUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = muviMiru;
 			};
 			name = Release;
