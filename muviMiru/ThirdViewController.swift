@@ -6,22 +6,18 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     @IBOutlet weak var myTextView: UITableView!
     
     var contentTitle:[String] = []
-    //var contentArtWork:[NSData] = []
     var saveDate:[Date] = []
     
     var selectedIndex =  -1 //選択された行番号
     
-    
+    let now = NSDate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         read()
-        //myTextView.reloadData()
     }
     
     //    CoreDateに保存されているデータの読み込み（READ）
@@ -50,23 +46,6 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
                 //var artWork:String? = result.value(forKey:"artworkUrl") as? String
                 var saveSaveDate:Date? = result.value(forKey: "saveDate") as? Date
                 print("セーブデータ\(saveSaveDate)")
-//                let catPictureURL = URL(string: artWork!)
-//                let session = URLSession(configuration: .default)
-//                let downloadPicTask = session.dataTask(with: catPictureURL!) { (data, response, error) in
-//                    if let e = error {
-//                        print("cat pictureのダウンロード中にエラーが発生しました: \(e)")
-//                    } else {
-//                       if let res = response as? HTTPURLResponse {
-//                        print("レスポンスコード付き画像ダウンロード \(res.statusCode)")
-//                            if let imageData = data {
-//                            self.contentArtWork.append(data as! NSData)
-//                            }
-//                        }
-//                        }
-//                                                                            }
-//
-//                downloadPicTask.resume()
-
                 
                 
                 contentTitle.append(title as! String)
@@ -91,10 +70,6 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         //表示したい文字の設定 indexPath.rowが行番号を表す
-        //cell.movieLavel?.text = contentTitle[indexPath.row]
-//        let imageimage = UIImage(data: contentArtWork[indexPath.row] as Data)
-//        cell.movieImage?.image = imageimage
-//
         cell.textLabel?.text = contentTitle[indexPath.row]
         cell.textLabel?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         cell.accessoryType = .disclosureIndicator

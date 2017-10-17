@@ -32,12 +32,15 @@ class movieDetail: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         read()
-        print("\(scSelectedIndex)行目が押されて移動してきました")
+        //print("\(scSelectedIndex)行目が押されて移動してきました")
+        animateImage(target: myImageView)
         
-        
+
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(movieDetail.urlTap(_:)))
         textUrl.addGestureRecognizer(tapGestureRecognizer)
         textUrl.isUserInteractionEnabled = true
+        
+        
         
     }
     
@@ -65,13 +68,24 @@ class movieDetail: UIViewController {
             for result: AnyObject in fetchResults{
                 let title:String? = result.value(forKey: "trackName") as? String
                 let description:String? = result.value(forKey:"longDescription") as? String
-                let releaseDate:String? = result.value(forKey: "releaseDate") as? String
+                var releaseDate:String? = result.value(forKey: "releaseDate") as? String
                 let trackUrl:String? = result.value(forKey: "trackViewUrl") as? String
                 let artWork:String? = result.value(forKey:"artworkUrl") as? String
                 
-//                let imageURL = URL(string: artWork)
-//
-//                myImageView.sd_setImage(with: imageURL)
+                
+                //映画リリース日に含まれる余分な文字を取り除く
+                var replaced = releaseDate?.replacingOccurrences(of: "T", with: "") as! String
+                var replaced1 = replaced.replacingOccurrences(of: "Z", with: "") as! String
+                
+                //日付データの取得
+                let format:DateFormatter = DateFormatter()
+                format.dateFormat = "yyyy-MM-ddhh:mm:ss"
+                let movieTime = format.date(from: replaced1)
+
+                let format1:DateFormatter = DateFormatter()
+                format1.dateFormat = "yyyy-MM-dd"
+                let movieDate = format1.string(from: movieTime as! Date)
+
                 
                 let catPictureURL = URL(string: artWork!)
                 let session = URLSession(configuration: .default)
@@ -92,11 +106,11 @@ class movieDetail: UIViewController {
                     downloadPicTask.resume()
                 
                 
-                
+                //各情報の出力
                 textName.text = title!
                 textUrl.text = trackUrl!
                 myTextView.text = description!
-                textRelease.text = releaseDate!
+                textRelease.text = movieDate
                 
                 
                 
@@ -109,11 +123,35 @@ class movieDetail: UIViewController {
     
     //urlがタップされたら
     @IBAction func urlTap(_ sender: Any) {
-        if let url = NSURL(string: textUrl as! String){
+        if let url = NSURL(string: textUrl.text!){
             UIApplication.shared.openURL(url as URL)
         }
     }
     
+    
+    //画像を左から右にアニメイトする
+    func animateImage(target:UIView){
+        // 画面1pt進むのにかかる時間の計算
+        let timePerSecond = 15.0 / view.bounds.size.width
+        
+        // 画像の位置から画面右までにかかる時間の計算
+        let remainTime = (view.bounds.size.width - target.frame.origin.x) * timePerSecond
+        
+        // アニメーション
+        UIView.transition(with: target, duration: TimeInterval( remainTime), options: .curveLinear, animations: { () -> Void in
+            
+            // 画面右まで移動
+            target.frame.origin.x = self.view.bounds.width
+            
+        }, completion: { _ in
+            
+            // 画面右まで行ったら、画面左に戻す
+            target.frame.origin.x = -target.bounds.size.width
+            
+            // 再度アニメーションを起動
+            self.animateImage(target: target)
+        })
+    }
     
     
     override func didReceiveMemoryWarning() {
