@@ -83,7 +83,7 @@ class movieDetail: UIViewController {
                 let movieTime = format.date(from: replaced1)
 
                 let format1:DateFormatter = DateFormatter()
-                format1.dateFormat = "yyyy-MM-dd"
+                format1.dateFormat = "yyyy/MM/dd"
                 let movieDate = format1.string(from: movieTime as! Date)
 
                 

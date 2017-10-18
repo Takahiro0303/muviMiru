@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,41 +19,40 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jakob-owens-199503" translatesAutoresizingMaskIntoConstraints="NO" id="I0C-PZ-tzg">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ムビみる" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SlX-qR-fpE">
-                                <rect key="frame" x="76" y="230" width="192" height="80"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　さあ、あなたの直感で映画を選んで見ませんか？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mib-fa-9oQ">
+                                <rect key="frame" x="66" y="391" width="282" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="　さあ、あなたの直感で映画を選んで見ませんか？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mib-fa-9oQ">
-                                <rect key="frame" x="28" y="318" width="288" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moviech" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SlX-qR-fpE">
+                                <rect key="frame" x="120" y="296" width="174" height="57"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="R76-v0-jTO"/>
+                                    <constraint firstAttribute="height" constant="57" id="TP3-iL-hxa"/>
+                                    <constraint firstAttribute="width" constant="174" id="jmR-Sc-PFg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="SlX-qR-fpE" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="60" id="4bd-Ae-aMj"/>
-                            <constraint firstItem="I0C-PZ-tzg" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="EoG-AP-YZ3"/>
-                            <constraint firstItem="SlX-qR-fpE" firstAttribute="centerX" secondItem="Mib-fa-9oQ" secondAttribute="centerX" id="FGm-1B-5O7"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Mib-fa-9oQ" secondAttribute="bottom" constant="230" id="Hut-Rh-T2m"/>
-                            <constraint firstItem="I0C-PZ-tzg" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="If1-kR-Vee"/>
-                            <constraint firstAttribute="trailing" secondItem="I0C-PZ-tzg" secondAttribute="trailing" id="Ix1-7S-3wD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Mib-fa-9oQ" secondAttribute="trailing" constant="-12" id="OON-Kz-8ua"/>
-                            <constraint firstItem="Mib-fa-9oQ" firstAttribute="top" secondItem="SlX-qR-fpE" secondAttribute="bottom" constant="8" symbolic="YES" id="ZpH-GH-AtR"/>
-                            <constraint firstItem="Mib-fa-9oQ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="12" id="nuW-h9-279"/>
-                            <constraint firstItem="SlX-qR-fpE" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="210" id="srI-fH-2rO"/>
-                            <constraint firstItem="I0C-PZ-tzg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="u9M-5J-1ZR"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Mib-fa-9oQ" secondAttribute="bottom" constant="330" id="072-BG-A9j"/>
+                            <constraint firstItem="I0C-PZ-tzg" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Bkj-6L-d6v"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SlX-qR-fpE" secondAttribute="trailing" constant="100" id="D4R-gJ-QUN"/>
+                            <constraint firstItem="SlX-qR-fpE" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="100" id="DqJ-Jc-2qq"/>
+                            <constraint firstItem="Mib-fa-9oQ" firstAttribute="centerX" secondItem="SlX-qR-fpE" secondAttribute="centerX" id="Rsh-Ni-0wM"/>
+                            <constraint firstItem="Mib-fa-9oQ" firstAttribute="top" secondItem="SlX-qR-fpE" secondAttribute="bottom" constant="38" id="U7h-Pm-ii5"/>
+                            <constraint firstItem="I0C-PZ-tzg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="dL0-zr-fXg"/>
+                            <constraint firstAttribute="trailing" secondItem="I0C-PZ-tzg" secondAttribute="trailing" id="gMI-ik-U1o"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="I0C-PZ-tzg" secondAttribute="bottom" id="nFd-Mh-Izp"/>
                         </constraints>
                     </view>
                 </viewController>
