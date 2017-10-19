@@ -41,6 +41,9 @@ class movieSwipe: UIViewController {
     var releaseDate = ""
     var trackViewUrl = ""
     
+    //一度出したパッケージ情報を配列へ入れる
+    var reMovie:[NSData] = []
+    
     //背景のView
     var baseView:UIView = UIView(frame: CGRect(x: 10, y: 80, width: 300, height: 420))
     
@@ -254,6 +257,8 @@ class movieSwipe: UIViewController {
                 card.center = CGPoint(x: self.view.center.x - 200, y: card.center.y + 75)
                 card.alpha = 0
             })
+            
+                
             self.newPage()
             
                 
@@ -324,6 +329,48 @@ class movieSwipe: UIViewController {
         
         //noimageの写真を置く
         var imageView1:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290 , height: 390))
+        
+//        //オートレイアウト動的配置
+
+        baseView.translatesAutoresizingMaskIntoConstraints = false
+
+        self.view.addConstraints([
+
+            // self.veiwの上から0pxの位置に配置
+            NSLayoutConstraint(
+                item: self.baseView,
+                attribute: NSLayoutAttribute.top,
+                relatedBy: NSLayoutRelation.equal,
+                toItem: nil,
+                attribute: NSLayoutAttribute.top,
+                multiplier: 1.0,
+                constant: 0
+                )]
+//            ),
+//
+//            // self.viewの横幅いっぱいにする
+//            NSLayoutConstraint(
+//                item: self.baseView,
+//                attribute: NSLayoutAttribute.width,
+//                relatedBy: NSLayoutRelation.equal,
+//                toItem: self.view,
+//                attribute: NSLayoutAttribute.width,
+//                multiplier: 1.0,
+//                constant: 0
+//            ),
+//
+//            // self.viewの縦幅いっぱいにする
+//            NSLayoutConstraint(
+//                item: self.baseView,
+//                attribute: NSLayoutAttribute.height,
+//                relatedBy: NSLayoutRelation.equal,
+//                toItem: self.view,
+//                attribute: NSLayoutAttribute.height,
+//                multiplier: 1.0,
+//                constant: 0
+//            )]
+        )
+        
         
         //baseView(カード)の色をつける
         baseView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
