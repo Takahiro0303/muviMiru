@@ -4,7 +4,7 @@ import CoreData
 class movieSwipe: UIViewController {
     
 
-    @IBOutlet weak var thumbImage: UIImageView!
+    //@IBOutlet weak var thumbImage: UIImageView!
     
     //インジケーターのインスタンス化
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
@@ -41,18 +41,22 @@ class movieSwipe: UIViewController {
     var releaseDate = ""
     var trackViewUrl = ""
     
-    //一度出したパッケージ情報を配列へ入れる
-    var reMovie:[NSData] = []
+    //userDefaultsインスタンス化
+    let userDefaults = UserDefaults.standard
+    
+    //movieデータの空の配列
+    let movie:[String] = []
+    
     
     //背景のView
-    var baseView:UIView = UIView(frame: CGRect(x: 10, y: 80, width: 300, height: 420))
-    
+        var baseView:UIView = UIView(frame: CGRect(x: 10, y: 80, width: 300, height: 420))
+
     //写真を置くUIImageViewの作成
-    var imageView:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290 , height: 390))
+        var imageView:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290 , height: 390))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        divisor = (view.frame.width / 2) / 0.61
         showIndicator()
         
         //iTunesのAPIからデータ取得
@@ -126,7 +130,6 @@ class movieSwipe: UIViewController {
                     if let res = response as? HTTPURLResponse {
                         print("レスポンスコード付きダウンロード \(res.statusCode)")
                         if let imageData = data {
-                            //self.movieD.append(data as! NSData)
                             
                             //movieListを検索し、今ダウンロードされたデータがどれか判定、その場所へ保存（順番を一致させる）
                             var index = 0
@@ -236,16 +239,17 @@ class movieSwipe: UIViewController {
         let point = sender.translation(in: view)
         let xFromCenter = card.center.x - view.center.x
         card.center = CGPoint(x: card.center.x + (point.x)/4, y: card.center.y + (point.y/4))
+        card.transform = CGAffineTransform(rotationAngle: xFromCenter/divisor)
         
-        if xFromCenter > 0 {
-            thumbImage.image = #imageLiteral(resourceName: "iThumbsUp")
-            thumbImage.tintColor = UIColor.green
-        }else{
-            thumbImage.image = #imageLiteral(resourceName: "ThumbsDown")
-            thumbImage.tintColor = UIColor.red
-        }
-
-        thumbImage.alpha = abs(xFromCenter) / view.center.x
+//        if xFromCenter > 0 {
+//            thumbImage.image = #imageLiteral(resourceName: "iThumbsUp")
+//            thumbImage.tintColor = UIColor.green
+//        }else{
+//            thumbImage.image = #imageLiteral(resourceName: "ThumbsDown")
+//            thumbImage.tintColor = UIColor.red
+//        }
+//
+//        thumbImage.alpha = abs(xFromCenter) / view.center.x
 
         
         //指が離れた時に呼ばれる
@@ -254,22 +258,25 @@ class movieSwipe: UIViewController {
             if card.center.x < 75 {
             //左に消える
             UIView.animate(withDuration: 0.3, animations: {
-                card.center = CGPoint(x: self.view.center.x - 200, y: card.center.y + 75)
+                card.center = CGPoint(x: self.view.center.x - 300, y: card.center.y + 75)
                 card.alpha = 0
             })
             
-                
+            UserDefaults.standard.set(artWork, forKey: "movie")
+            userDefaults.synchronize()
             self.newPage()
             
-                
             return
             }else if card.center.x > (view.frame.width - 75){
             //右に消える
             UIView.animate(withDuration: 0.3, animations: {
-                card.center.self = CGPoint(x: self.view.center.x + 200, y: card.center.y + 75)
+                card.center.self = CGPoint(x: self.view.center.x + 300, y: card.center.y + 75)
                 card.alpha = 0
             })
             
+            // デフォルト値取得
+            UserDefaults.standard.set(artWork, forKey: "movie")
+            userDefaults.synchronize()
             
             //AppDelegateを使う用意をいておく
             let appD:AppDelegate = UIApplication.shared.delegate as!AppDelegate
@@ -314,6 +321,7 @@ class movieSwipe: UIViewController {
             UIView.animate(withDuration: 0.2, animations: {
                 card.center = self.view.center
 //                self.thumbImage.alpha = 0
+                card.transform = .identity
             })
             
         }
@@ -322,54 +330,19 @@ class movieSwipe: UIViewController {
     
     func viewOn(image:UIImage?) {
         //背景のView
-        var baseView:UIView = UIView(frame: CGRect(x: 10, y: 80, width: 300, height: 420))
+        var height = self.view.bounds.size.height - 150
+        var width = self.view.bounds.size.width - 40
+        
+        var baseView:UIView = UIView(frame: CGRect(x: 10, y: 80, width: width, height: height))
         
         //写真を置くUIImageViewの作成
-        var imageView:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290 , height: 390))
+        var imageHeight = self.view.bounds.size.height - 180
+        var imageWidth = self.view.bounds.size.width - 50
+        
+        var imageView:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: imageWidth , height: imageHeight))
         
         //noimageの写真を置く
-        var imageView1:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: 290 , height: 390))
-        
-//        //オートレイアウト動的配置
-
-        baseView.translatesAutoresizingMaskIntoConstraints = false
-
-        self.view.addConstraints([
-
-            // self.veiwの上から0pxの位置に配置
-            NSLayoutConstraint(
-                item: self.baseView,
-                attribute: NSLayoutAttribute.top,
-                relatedBy: NSLayoutRelation.equal,
-                toItem: nil,
-                attribute: NSLayoutAttribute.top,
-                multiplier: 1.0,
-                constant: 0
-                )]
-//            ),
-//
-//            // self.viewの横幅いっぱいにする
-//            NSLayoutConstraint(
-//                item: self.baseView,
-//                attribute: NSLayoutAttribute.width,
-//                relatedBy: NSLayoutRelation.equal,
-//                toItem: self.view,
-//                attribute: NSLayoutAttribute.width,
-//                multiplier: 1.0,
-//                constant: 0
-//            ),
-//
-//            // self.viewの縦幅いっぱいにする
-//            NSLayoutConstraint(
-//                item: self.baseView,
-//                attribute: NSLayoutAttribute.height,
-//                relatedBy: NSLayoutRelation.equal,
-//                toItem: self.view,
-//                attribute: NSLayoutAttribute.height,
-//                multiplier: 1.0,
-//                constant: 0
-//            )]
-        )
+        var imageView1:UIImageView = UIImageView(frame: CGRect(x: 5, y: 20, width: imageWidth , height: imageHeight))
         
         
         //baseView(カード)の色をつける
@@ -398,9 +371,10 @@ class movieSwipe: UIViewController {
                 let imageimage = UIImage(data: movieA as Data)
                 imageView.image = imageimage
             }else{
-                
+                imageView1.image = (image:#imageLiteral(resourceName: "noimage.png")) as? UIImage
             }
         }
+        
         
         
         
@@ -414,8 +388,11 @@ class movieSwipe: UIViewController {
         //viewの上にbaseViewを乗せる
         self.view.addSubview(baseView)
         
+        baseView.center.x = self.view.center.x
+
         
     }
+
     
     //インジケータースタート
     func showIndicator(){

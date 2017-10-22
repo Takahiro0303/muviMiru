@@ -65,6 +65,7 @@
 		1C83F9461F90FA0F00EFB145 /* movieData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = movieData.xcdatamodel; sourceTree = "<group>"; };
 		1C83F9481F90FB7C00EFB145 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1C83F94A1F90FB9C00EFB145 /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1C9D10161F99CD78006A491E /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = noimage.png; path = ../../../../Downloads/noimage.png; sourceTree = "<group>"; };
 		1CA84D761F7394B40050C03D /* movieSwipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = movieSwipe.swift; path = ../movieSwipe.swift; sourceTree = "<group>"; };
 		1CD69EAD1F93779F0063AB58 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35A0891BE0D30B4C50356AAB /* Pods_muviMiruUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_muviMiruUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +143,7 @@
 				1C2155E21F6EA02600EA2E8E /* movieDetail.swift */,
 				1C67D3281F7A241E00D9CACA /* FontAwsome.swift */,
 				1C2157591F73905A00EA2E8E /* Assets.xcassets */,
+				1C9D10161F99CD78006A491E /* noimage.png */,
 				1C83F9451F90FA0F00EFB145 /* movieData.xcdatamodeld */,
 				1C2155B71F6E5EA800EA2E8E /* LaunchScreen.storyboard */,
 				1C2155BA1F6E5EA800EA2E8E /* Info.plist */,

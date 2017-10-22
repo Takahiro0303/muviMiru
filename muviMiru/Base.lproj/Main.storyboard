@@ -90,23 +90,14 @@
                     <view key="view" contentMode="scaleToFill" id="Q2O-os-FfN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="iThumbsUp" translatesAutoresizingMaskIntoConstraints="NO" id="BgX-BR-reB">
-                                <rect key="frame" x="203" y="116" width="87" height="99"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <connections>
-                        <outlet property="thumbImage" destination="BgX-BR-reB" id="wub-kW-kgU"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOF-gK-Mhs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="6nA-w8-Kma"/>
             </objects>
-            <point key="canvasLocation" x="2460" y="360.21126760563379"/>
+            <point key="canvasLocation" x="2459.4202898550725" y="359.51086956521743"/>
         </scene>
         <!--Third View Controller-->
         <scene sceneID="Exf-0p-4yq">
@@ -373,8 +364,5 @@
             <point key="canvasLocation" x="-38" y="1481"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="iThumbsUp" width="48" height="48"/>
-    </resources>
     <color key="tintColor" red="0.069778274419999994" green="1" blue="0.82681080579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
