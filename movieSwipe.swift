@@ -59,6 +59,10 @@ class movieSwipe: UIViewController {
         divisor = (view.frame.width / 2) / 0.61
         showIndicator()
         
+        //userdefultのデータの取得
+        //let name:String? = UserDefaults.standard.object(forKey: "movie") as! String
+        //print("ユーザーデフォルト\(name)")
+        
         //iTunesのAPIからデータ取得
         //URLを指定して、インターネット経由で取得
         var url = URL(string: movieplace1)
@@ -142,6 +146,14 @@ class movieSwipe: UIViewController {
                                 }
                                 
                             }
+//                        if let imageData1 = data {
+//                            for movieTmp in self.movieList{
+//                                if movieTmp == name{
+//                                    index += 1
+//                                }
+//                            }
+//
+//                            }
                             
                             
                         } else {
@@ -262,8 +274,8 @@ class movieSwipe: UIViewController {
                 card.alpha = 0
             })
             
-            UserDefaults.standard.set(artWork, forKey: "movie")
-            userDefaults.synchronize()
+//            UserDefaults.standard.set(artWork, forKey: "movie")
+//            userDefaults.synchronize()
             self.newPage()
             
             return
@@ -275,8 +287,8 @@ class movieSwipe: UIViewController {
             })
             
             // デフォルト値取得
-            UserDefaults.standard.set(artWork, forKey: "movie")
-            userDefaults.synchronize()
+//            UserDefaults.standard.set(artWork, forKey: "movie")
+//            userDefaults.synchronize()
             
             //AppDelegateを使う用意をいておく
             let appD:AppDelegate = UIApplication.shared.delegate as!AppDelegate
@@ -371,7 +383,7 @@ class movieSwipe: UIViewController {
                 let imageimage = UIImage(data: movieA as Data)
                 imageView.image = imageimage
             }else{
-                imageView1.image = (image:#imageLiteral(resourceName: "noimage.png")) as? UIImage
+                //imageView1.image = (image:#imageLiteral(resourceName: "noimage.png")) as? UIImage
             }
         }
         
