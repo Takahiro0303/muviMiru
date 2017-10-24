@@ -41,8 +41,11 @@ class movieSwipe: UIViewController {
     var releaseDate = ""
     var trackViewUrl = ""
     
-    //userDefaultsインスタンス化
-    let userDefaults = UserDefaults.standard
+//    //userDefaultsインスタンス化
+//    let userDefaults = UserDefaults.standard
+//    
+//    var eigaData:[String] = []
+    
     
     //movieデータの空の配列
     let movie:[String] = []
@@ -146,14 +149,6 @@ class movieSwipe: UIViewController {
                                 }
                                 
                             }
-//                        if let imageData1 = data {
-//                            for movieTmp in self.movieList{
-//                                if movieTmp == name{
-//                                    index += 1
-//                                }
-//                            }
-//
-//                            }
                             
                             
                         } else {
@@ -229,7 +224,7 @@ class movieSwipe: UIViewController {
 
         
             artWork = movieList[number]
-            
+        
             let movieT = movieTrackName[number]
             trackName = movieT
             print("表示されているDVD名"+trackName)
@@ -273,9 +268,16 @@ class movieSwipe: UIViewController {
                 card.center = CGPoint(x: self.view.center.x - 300, y: card.center.y + 75)
                 card.alpha = 0
             })
-            
-//            UserDefaults.standard.set(artWork, forKey: "movie")
-//            userDefaults.synchronize()
+//                if userDefaults.object(forKey: "movie") != nil {
+//                    self.eigaData = [userDefaults.object(forKey: "movie") as! String]
+//                }
+//
+//                eigaData.append(artWork)
+//                // デフォルト値取得
+//                UserDefaults.standard.set(eigaData, forKey: "movie")
+//                //userDefaults.synchronize()
+                
+                
             self.newPage()
             
             return
@@ -285,10 +287,15 @@ class movieSwipe: UIViewController {
                 card.center.self = CGPoint(x: self.view.center.x + 300, y: card.center.y + 75)
                 card.alpha = 0
             })
-            
-            // デフォルト値取得
-//            UserDefaults.standard.set(artWork, forKey: "movie")
-//            userDefaults.synchronize()
+//                if userDefaults.object(forKey: "movie") != nil {
+//                    self.eigaData = [userDefaults.object(forKey: "movie") as! String]
+//                }
+//
+//                eigaData.append(artWork)
+//                // デフォルト値取得
+//                UserDefaults.standard.set(eigaData, forKey: "movie")
+//                //userDefaults.synchronize()
+                
             
             //AppDelegateを使う用意をいておく
             let appD:AppDelegate = UIApplication.shared.delegate as!AppDelegate
