@@ -41,10 +41,10 @@ class movieSwipe: UIViewController {
     var releaseDate = ""
     var trackViewUrl = ""
     
-//    //userDefaultsインスタンス化
-//    let userDefaults = UserDefaults.standard
-//    
-//    var eigaData:[String] = []
+    //userDefaultsインスタンス化
+    let userDefaults = UserDefaults.standard
+    
+    var eigaData:[String] = []
     
     
     //movieデータの空の配列
@@ -61,10 +61,6 @@ class movieSwipe: UIViewController {
         super.viewDidLoad()
         divisor = (view.frame.width / 2) / 0.61
         showIndicator()
-        
-        //userdefultのデータの取得
-        //let name:String? = UserDefaults.standard.object(forKey: "movie") as! String
-        //print("ユーザーデフォルト\(name)")
         
         //iTunesのAPIからデータ取得
         //URLを指定して、インターネット経由で取得
@@ -147,8 +143,8 @@ class movieSwipe: UIViewController {
                                 }else{
                                     index += 1
                                 }
-                                
                             }
+                            
                             
                             
                         } else {
@@ -221,6 +217,12 @@ class movieSwipe: UIViewController {
         number += 1
         
         viewOn(image:nil)
+        
+        for eigaContents in eigaData{
+            if movieList == eigaContents as![String]{
+                
+            }
+        }
 
         
             artWork = movieList[number]
@@ -269,7 +271,7 @@ class movieSwipe: UIViewController {
                 card.alpha = 0
             })
 //                if userDefaults.object(forKey: "movie") != nil {
-//                    self.eigaData = [userDefaults.object(forKey: "movie") as! String]
+//                    self.eigaData = userDefaults.object(forKey: "movie") as! [String]
 //                }
 //
 //                eigaData.append(artWork)
@@ -288,7 +290,7 @@ class movieSwipe: UIViewController {
                 card.alpha = 0
             })
 //                if userDefaults.object(forKey: "movie") != nil {
-//                    self.eigaData = [userDefaults.object(forKey: "movie") as! String]
+//                    self.eigaData = userDefaults.object(forKey: "movie") as! [String]
 //                }
 //
 //                eigaData.append(artWork)
@@ -390,7 +392,7 @@ class movieSwipe: UIViewController {
                 let imageimage = UIImage(data: movieA as Data)
                 imageView.image = imageimage
             }else{
-                //imageView1.image = (image:#imageLiteral(resourceName: "noimage.png")) as? UIImage
+                imageView1.image = UIImage(named:"noimage.png")
             }
         }
         
